@@ -1,0 +1,126 @@
+@import "https://fonts.googleapis.com/css?family=DM+Serif+Display|Heebo|Indie+Flower|Merriweather|Mountains+of+Christmas|Noto+Serif|Slabo+27px|Work+Sans&display=swap";
+
+* {
+box-sizing:border-box
+}
+
+body,html {
+height:100%;
+margin: 0;
+padding: 0;
+}
+
+header,section,footer {
+overflow-x:hidden;
+}
+
+:root {
+--dm:"DM Serif Display",cursive;
+--heebo:Heebo,cursive;
+--indie:"Indie Flower",cursive;
+--merrie:Merriweather,cursive;
+--mountains:"Mountains of Christmas",cursive;
+--noto:"Noto Serif",cursive;
+--lightblack:#2e2e2e;
+--bggradient:linear-gradient(to bottom,#dd2476,#ff512ff);
+--lightgray:rgba(255,255,255,0)
+}
+
+.el{
+    padding: 1em;
+    text-align: center;
+    font-size: 2em;
+    color: mediumseagreen;
+    font-family: var(--merrie);
+}
+
+
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 0.75em;
+    border: 1px solid #ccc;
+    border-radius: 0.25em;
+    resize: vertical;
+    
+  }
+  
+  label {
+    padding: 0.75em 0.75em 0.75em 0;
+    display: inline-block;
+  }
+  
+  .container {
+    border-radius: 0.3em;
+    background-color: #f2f2f2;
+    padding: 1.25em;
+  }
+  
+  .col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 0.4em;
+  }
+  
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 0.4em;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .col-25, .col-75 {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+
+.buttons{
+ 
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: var(--noto);
+  letter-spacing: 0.2em;
+  border-radius: 0.5em;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  padding: 1em;
+}
+.buttons:hover{
+    color: white;
+    cursor: pointer;
+  }
+
+  table, th, td {
+    border: 1px solid black;
+    text-align: center;
+    font-size: 1.2em;
+  }  
+
+table{
+    width: 100%;
+    margin: 0.5em ;
+}  
+
+table .btnedit
+{
+    color: lightgreen;
+    cursor: pointer;
+}
+
+table .btndelete
+{
+    color: red;
+    cursor: pointer;
+}
+
+
+  
