@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name= "viewport" content="width=device-width, intial-scale =1.0">
+        <title>CRUD with JS</title>
+        <link rel="stylesheet" href="../css/style.css">
+        <link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <script src="../source/script.js"></script>
+
+
+
+
+        <section class="center">
+            <h1 class="el"><i class="fas fa-plug"></i>Electronic Store</h1>
+             
+            <div class="container">
+                    <form action="/action_page.php">
+                      <div class="row">
+                        <div class="col-25">
+                          <label for="id">ID</label>
+                        </div>
+                        <div class="col-75">
+                          <input type="text" id="id"  placeholder="ID" readonly>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-25">
+                          <label for="pname">Product Name</label>
+                        </div>
+                        <div class="col-75">
+                          <input type="text" id="pname"  placeholder="Product Name">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-25">
+                          <label for="seller">Seller</label>
+                        </div>
+                        <div class="col-75">
+                          <input type="text" id="seller"  placeholder="Seller">
+                        </div>
+                      </div>
+                      
+
+
+                      <div class="row">
+                        <div class="col-25">
+                          <label for="price">Price</label>
+                        </div>
+                        <div class="col-75">
+                         <input type="text" id="price"  placeholder="Price">
+                          
+                        </div>
+                      </div>
+                      
+                    </form>
+                  </div>
+
+        </section>    
+
+
+
+
+
+
+
+
+            <!-- Create, Update , read and Delete-->
+             
+            <section class="buttons">
+
+                <button id="btn-create">Create</button>
+                <button id="btn-read">Read</button>
+                <button id="btn-update">Update</button>
+                <button id="btn-delete">Delete All</button>
+
+            </section>
+
+
+            <div class="container">
+
+                    <table>
+                            <tr>
+                              <th>ID</th>
+                              <th>Product Name</th> 
+                              <th>Seller</th>
+                              <th>Price</th>
+                              <th>Edit</th>
+                              <th>Delete</th>
+                            </tr>
+                            <tr>
+                              <td>Jill</td>
+                              <td>Smith</td> 
+                              <td>50</td>
+                              <td>50</td>
+                              <td><i class = "fas fa-edit btnedit"></i></td>
+                              <td><i class = "fas fa-trash-alt btndelete"></i></td>
+                            </tr>
+                            <tr>
+                              <td>Eve</td>
+                              <td>Jackson</td> 
+                              <td>94</td>
+                              <td>50</td>
+                              <td><i class = "fas fa-edit btnedit"></i></td>
+                              <td><i class = "fas fa-trash-alt btndelete"></i></td>
+                            </tr>
+
+                            <tr>
+                                    <td>Eve</td>
+                                    <td>Jackson</td> 
+                                    <td>94</td>
+                                    <td>50</td>
+                                    <td><i class = "fas fa-edit btnedit"></i></td>
+                                    <td><i class = "fas fa-trash-alt btndelete"></i></td>
+                            </tr>
+                    </table>
+
+
+            </div>
+
+           
+
+            
+        
+
+
+    </body>
+</html>
