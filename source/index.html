@@ -8,39 +8,42 @@
         <link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet">
     </head>
 
-    <body>
+    <body onload="exist()">
         <script src="../source/script.js"></script>
 
-
+        
+        
 
 
         <section class="center">
             <h1 class="el"><i class="fas fa-plug"></i>Electronic Store</h1>
              
             <div class="container">
-                    <form action="/action_page.php">
+                    <form  autocomplete="off"> 
                       <div class="row">
                         <div class="col-25">
                           <label for="id">ID</label>
                         </div>
                         <div class="col-75">
-                          <input type="text" id="id"  placeholder="ID" readonly>
+                          <input type="number" id="id" name="id" placeholder="ID (only numbers) " >
                         </div>
                       </div>
+
                       <div class="row">
                         <div class="col-25">
                           <label for="pname">Product Name</label>
                         </div>
                         <div class="col-75">
-                          <input type="text" id="pname"  placeholder="Product Name">
+                          <input type="text" id="pname" name="pname" placeholder="Product Name" >
                         </div>
                       </div>
+
                       <div class="row">
                         <div class="col-25">
                           <label for="seller">Seller</label>
                         </div>
                         <div class="col-75">
-                          <input type="text" id="seller"  placeholder="Seller">
+                          <input type="text" id="seller" name="seller" placeholder="Seller" >
                         </div>
                       </div>
                       
@@ -51,7 +54,7 @@
                           <label for="price">Price</label>
                         </div>
                         <div class="col-75">
-                         <input type="text" id="price"  placeholder="Price">
+                         <input type="text" id="price" name="price" placeholder="Price" >
                           
                         </div>
                       </div>
@@ -62,27 +65,23 @@
         </section>    
 
 
-
-
-
-
-
-
+       
+        
             <!-- Create, Update , read and Delete-->
              
             <section class="buttons">
 
-                <button id="btn-create">Create</button>
-                <button id="btn-read">Read</button>
-                <button id="btn-update">Update</button>
-                <button id="btn-delete">Delete All</button>
+                <button onclick="create()" id="btn-create">Create</button>
+                <button onclick="updateform()"id="btn-update">Update</button>
+                <button onclick="deleteall()"id="btn-delete">Delete All</button>
 
             </section>
 
 
             <div class="container">
 
-                    <table>
+                    <table id="ptable">
+                      <thead>
                             <tr>
                               <th>ID</th>
                               <th>Product Name</th> 
@@ -91,41 +90,18 @@
                               <th>Edit</th>
                               <th>Delete</th>
                             </tr>
-                            
-                            <tr>
-                              <td>Jill</td>
-                              <td>Smith</td> 
-                              <td>50</td>
-                              <td>50</td>
-                              <td><i class = "fas fa-edit btnedit"></i></td>
-                              <td><i class = "fas fa-trash-alt btndelete"></i></td>
-                            </tr>
+                     </thead> 
+                     
+                     <tbody></tbody>
 
-                            <tr>
-                              <td>Eve</td>
-                              <td>Jackson</td> 
-                              <td>94</td>
-                              <td>50</td>
-                              <td><i class = "fas fa-edit btnedit"></i></td>
-                              <td><i class = "fas fa-trash-alt btndelete"></i></td>
-                            </tr>
-
-                            <tr>
-                                    <td>Eve</td>
-                                    <td>Jackson</td> 
-                                    <td>94</td>
-                                    <td>50</td>
-                                    <td><i class = "fas fa-edit btnedit"></i></td>
-                                    <td><i class = "fas fa-trash-alt btndelete"></i></td> 
-                            </tr>
+                           
                     </table>
 
 
             </div>
 
-           
 
-            
+           
         
 
 
