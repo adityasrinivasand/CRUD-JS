@@ -7,10 +7,14 @@
   <title>CRUD with JS</title>
   <link rel="stylesheet" href="../css/style.css">
   <link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet">
+
+  <script type="text/javascript" src="../source/script.js"></script>
+<script type="text/javascript" src="../source/pagination.js"></script>
+
 </head>
 
 <body onload="exist()">
-  <script src="../source/script.js"></script>
+  
 
   <section class="center">
     <h1 class="el"><i class="fas fa-plug"></i>Electronic Store</h1>
@@ -118,8 +122,8 @@
           </div>
       </div>
 
-      <select id="pageno" onchange="exist(this.value);">
-          <option value="5">5</option>
+      <select id="pageno" onchange="onupdate()">
+          <option selected="selected" value="5">5</option>
           <option value="10">10</option>
           <option value="15">15</option>
           <option value="20">20</option>
