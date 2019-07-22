@@ -1,9 +1,24 @@
 @import "https://fonts.googleapis.com/css?family=DM+Serif+Display|Heebo|Indie+Flower|Merriweather|Mountains+of+Christmas|Noto+Serif|Slabo+27px|Work+Sans&display=swap";
 
 * {
-box-sizing:border-box
+  box-sizing: border-box
 }
 
+<<<<<<< HEAD
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: blanchedalmond;
+
+}
+
+header,
+section,
+footer {
+  overflow-x: hidden;
+=======
 body,html {
 height:100%;
 margin: 0;
@@ -14,30 +29,80 @@ background-color: blanchedalmond;
 
 header,section,footer {
 overflow-x:hidden;
+>>>>>>> ebdd0913995b2f806e610af193b3c0509ba2ad5a
 
 }
 
 :root {
---dm:"DM Serif Display",cursive;
---heebo:Heebo,cursive;
---indie:"Indie Flower",cursive;
---merrie:Merriweather,cursive;
---mountains:"Mountains of Christmas",cursive;
---noto:"Noto Serif",cursive;
---lightblack:#2e2e2e;
---bggradient:linear-gradient(to bottom,#dd2476,#ff512ff);
---lightgray:rgba(255,255,255,0)
+  --dm: "DM Serif Display", cursive;
+  --heebo: Heebo, cursive;
+  --indie: "Indie Flower", cursive;
+  --merrie: Merriweather, cursive;
+  --mountains: "Mountains of Christmas", cursive;
+  --noto: "Noto Serif", cursive;
+  --lightblack: #2e2e2e;
+  --bggradient: linear-gradient(to bottom, #dd2476, #ff512ff);
+  --lightgray: rgba(255, 255, 255, 0)
 }
 
-.el{
-    padding: 1em;
-    text-align: center;
-    font-size: 2em;
-    color: mediumseagreen;
-    font-family: var(--merrie);
+.el {
+  padding: 0.75em;
+  text-align: center;
+  font-size: 2em;
+  color: mediumseagreen;
+  font-family: var(--merrie);
 }
 
 
+<<<<<<< HEAD
+input[type=text],
+input[type=number],
+select,
+textarea,
+input[type=password] {
+  width: 100%;
+  padding: 0.75em;
+  border: 1px solid #ccc;
+  border-radius: 0.25em;
+  resize: vertical;
+
+}
+
+label {
+  padding: 0.75em 0.75em 0.75em 0;
+  display: inline-block;
+}
+
+.container {
+  border-radius: 0.3em;
+  background-color: #f2f2f2;
+  padding: 1.25em;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 0.4em;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 0.4em;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+
+  .col-25,
+=======
   input[type=text],input[type=number], select, textarea, input[type=password] {
     width: 100%;
     padding: 0.75em;
@@ -64,30 +129,16 @@ overflow-x:hidden;
     margin-top: 0.4em;
   }
   
+>>>>>>> ebdd0913995b2f806e610af193b3c0509ba2ad5a
   .col-75 {
-    float: left;
-    width: 75%;
-    margin-top: 0.4em;
+    width: 100%;
+    margin-top: 0;
   }
-  
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-  @media screen and (max-width: 600px) {
-    .col-25, .col-75 {
-      width: 100%;
-      margin-top: 0;
-    }
-  }
+}
 
-.buttons{
- 
-  font-size: 1.2em;
+
+input[type=submit] {
+  font-size: 1em;
   font-weight: bold;
   font-family: var(--noto);
   letter-spacing: 0.2em;
@@ -95,34 +146,130 @@ overflow-x:hidden;
   margin-right: auto;
   margin-left: auto;
   text-align: center;
-  padding: 1em;
-  
+  padding: 0.5em;
 }
 
 
-  table, th, td {
-    border: 1px solid black;
-    text-align: center;
-    font-size: 1.2em;
-  }  
+table,
+th,
+td {
+  border: 1px solid black;
+  text-align: center;
+  font-size: 1.2em;
+}
 
-table{
+table {
+  width: 100%;
+  margin: 0.5em;
+}
+
+table .btnedit {
+  color: lightgreen;
+  cursor: pointer;
+}
+
+table .btndelete {
+  color: red;
+  cursor: pointer;
+}
+
+table .btnread {
+  color: orange;
+  cursor: pointer;
+}
+
+.card {
+  box-shadow: 0 0.4em 0.5em 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 40%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.card:hover {
+  box-shadow: 0 0.5em 1em 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  padding: 0.2em 1em;
+}
+
+.form1 {
+  border: 0.4em solid white;
+}
+
+/* Set a style for all buttons */
+.buttonsubmit {
+  background-color: goldenrod;
+  color: white;
+  padding: 1em 1.25em;
+  margin: 0.5em 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Add a hover effect for buttons */
+.buttonsubmit:hover {
+  opacity: 0.8;
+}
+
+
+/* Add padding to containers */
+.container {
+  padding: 1em;
+  
+}
+<<<<<<< HEAD
+=======
+
+>>>>>>> ebdd0913995b2f806e610af193b3c0509ba2ad5a
+
+
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+
+  .cancelbtn {
     width: 100%;
-    margin: 0.5em ;
-}  
+  }
+}
 
+<<<<<<< HEAD
+.login {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  padding: 1em;
+  font-family: var(--mountains);
+  color: #4CAF50;
+=======
 table .btnedit
 {
 color: lightgreen;
 cursor: pointer;
+>>>>>>> ebdd0913995b2f806e610af193b3c0509ba2ad5a
 }
 
-table .btndelete
-{
-    color: red;
-    cursor: pointer;
+.logina {
+  padding: 0.5em;
+  background-color: #4CAF50;
+  cursor: pointer;
 }
 
+<<<<<<< HEAD
+#myinput {
+
+  max-width: 20%;
+  margin: 1em;
+  font-size: 1em;
+}
+
+=======
 table .btnread
 {
     color: orange;
@@ -204,3 +351,4 @@ table .btnread
 
 
 }
+>>>>>>> ebdd0913995b2f806e610af193b3c0509ba2ad5a
