@@ -1,5 +1,5 @@
 var selectedRow = null;
-var i;
+var i=0;
 var editicon = '<i onClick = "edit(this)" class = "fas fa-edit btnedit"></i>';
 var deleteicon = '<i onClick = "deletee(this)" class = "fas fa-trash btndelete"></i>';
 var check = '<input type="checkbox" onClick = "checkbox(this)" name="checkbox" value="checkbox">'
@@ -8,8 +8,6 @@ var check = '<input type="checkbox" onClick = "checkbox(this)" name="checkbox" v
 
 
 function create() {
-
-
     var formdata = readformdata();
     insert(formdata);
     resetform();
@@ -41,14 +39,19 @@ function insert(data) {
     var cell5 = newrow.insertCell(4);
     var cell6 = newrow.insertCell(5);
     var cell7 = newrow.insertCell(6);
-
+    data.id = i;
     cell1.innerHTML = check;
     cell2.innerHTML = data.id;
     cell3.innerHTML = data.pname;
     cell4.innerHTML = data.seller;
     cell5.innerHTML = data.price;
     cell6.innerHTML = data.edit;
-    cell7.innerHTML = data.delete;
+    cell7.innerHTML = data.delete; 
+
+
+    arrpname.push(data.pname);
+    arrseller.push(data.seller);
+    arrprice.push(data.price);
 
 }
 
@@ -64,10 +67,10 @@ function resetform() {
 function edit(td) {
     document.getElementById("btn-create").disabled = true;
     selectedRow = td.parentElement.parentElement;
-    document.getElementById("id").value = selectedRow.cells[0].innerHTML;
-    document.getElementById("pname").value = selectedRow.cells[1].innerHTML;
-    document.getElementById("seller").value = selectedRow.cells[2].innerHTML;
-    document.getElementById("price").value = selectedRow.cells[3].innerHTML;
+    document.getElementById("id").value = selectedRow.cells[1].innerHTML;
+    document.getElementById("pname").value = selectedRow.cells[2].innerHTML;
+    document.getElementById("seller").value = selectedRow.cells[3].innerHTML;
+    document.getElementById("price").value = selectedRow.cells[4].innerHTML;
 
 }
 
@@ -123,27 +126,25 @@ function checkall() {
 
 
 function updateform() {
-    selectedRow.cells[0].innerHTML = document.getElementById("id").value;
-    selectedRow.cells[1].innerHTML = document.getElementById("pname").value;
-    selectedRow.cells[2].innerHTML = document.getElementById("seller").value;
-    selectedRow.cells[3].innerHTML = document.getElementById("price").value;
+    selectedRow.cells[1].innerHTML = document.getElementById("id").value;
+    selectedRow.cells[2].innerHTML = document.getElementById("pname").value;
+    selectedRow.cells[3].innerHTML = document.getElementById("seller").value;
+    selectedRow.cells[4].innerHTML = document.getElementById("price").value;
     resetform();
     document.getElementById("btn-create").disabled = false;
 }
 
-function exist() {
-    
-    var table = document.getElementById("ptable");
-    
-
-
-    var arrpname = ['Apple Iphone', 'Redmi Note 7', 'Redmi Note 7 Pro', 'Lenovo Z2 Plus', 'Honor 7 Plus', 'Sony Bravia 80 cm (32 Inches) Smart TV (Black) ', 'Samsung Galaxy M30 (Gradation Blue, 4+64 GB)', 'OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)', 'Vivo V15 (Aqua Blue, 6GB RAM, 64GB Storage)','Apple Iphone', 'Redmi Note 7', 'Redmi Note 7 Pro', 'Lenovo Z2 Plus', 'Honor 7 Plus', 'Sony Bravia 80 cm (32 Inches) Smart TV (Black) ', 'Samsung Galaxy M30 (Gradation Blue, 4+64 GB)', 'OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)', 'Vivo V15 (Aqua Blue, 6GB RAM, 64GB Storage) '];
+var arrpname = ['Apple Iphone', 'Redmi Note 7', 'Redmi Note 7 Pro', 'Lenovo Z2 Plus', 'Honor 7 Plus', 'Sony Bravia 80 cm (32 Inches) Smart TV (Black) ', 'Samsung Galaxy M30 (Gradation Blue, 4+64 GB)', 'OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)', 'Vivo V15 (Aqua Blue, 6GB RAM, 64GB Storage)','Apple Iphone', 'Redmi Note 7', 'Redmi Note 7 Pro', 'Lenovo Z2 Plus', 'Honor 7 Plus', 'Sony Bravia 80 cm (32 Inches) Smart TV (Black) ', 'Samsung Galaxy M30 (Gradation Blue, 4+64 GB)', 'OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)', 'Vivo V15 (Aqua Blue, 6GB RAM, 64GB Storage) '];
 
     var arrseller = ['France', 'Germany', 'England', 'Spain', 'Belgium', 'Italy', 'Portugal', 'Irland', 'Luxembourg','France', 'Germany', 'England', 'Spain', 'Belgium', 'Italy', 'Portugal', 'Irland', 'Luxembourg'];
 
     var arrprice = ['20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000','20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000'];
 
+
+function exist() {
     
+    var table = document.getElementById("ptable");
+ 
 
     for (i = 1; i <=5  ; i++) {
         var row = table.insertRow(i);

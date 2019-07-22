@@ -1,20 +1,12 @@
 
-
-
-
-concount = 10;
-var dispname = arrpname;
-var disseller = arrseller;
-var disprice = arrprice;
-
 function onupdate(){
     var table = document.getElementById("ptable");
-
-var concount = document.getElementById("pageno").value; //takes 5/10/15/20 - contentcount
+    deleteall();
+    var concount = document.getElementById("pageno").value; //takes 5/10/15/20 - contentcount
 
     console.log(concount);
     
-    for( var i = 1;i <= concount; i++){
+    for( var i = 1;( i <= arrpname.length  && i<=concount) ; i++){
 
         var row = table.insertRow(i);
         var cell1 = row.insertCell(0);
@@ -27,11 +19,28 @@ var concount = document.getElementById("pageno").value; //takes 5/10/15/20 - con
 
         cell1.innerHTML = check;
         cell2.innerHTML = i;
-        cell3.innerHTML = dispname[i - 1];
-        cell4.innerHTML = disseller[i - 1];
-        cell5.innerHTML = disprice[i - 1];
+        cell3.innerHTML = arrpname[i - 1];
+        cell4.innerHTML = arrseller[i - 1];
+        cell5.innerHTML = arrprice[i - 1];
         cell6.innerHTML = editicon;
         cell7.innerHTML = deleteicon;
     }
 
 }
+
+
+    function deleteall()
+{
+    
+    var table =document.getElementById("ptable");
+    var rowCount = table.rows.length;
+    for (var i = 1; i < rowCount; i++) {
+        
+            table.deleteRow(i);
+            rowCount--;
+            i--;
+    }
+    
+}
+
+
