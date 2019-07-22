@@ -4,6 +4,9 @@ var editicon = '<i onClick = "edit(this)" class = "fas fa-edit btnedit"></i>';
 var deleteicon = '<i onClick = "deletee(this)" class = "fas fa-trash btndelete"></i>';
 var check = '<input type="checkbox" onClick = "checkbox(this)" name="checkbox" value="checkbox">'
 
+
+
+
 function create() {
 
 
@@ -101,8 +104,7 @@ function deleteall()
 {
     var table =document.getElementById("ptable");
 
-    for(var i=1;i< table.rows.length;i++)
-    table.deleteRow(i);
+    table.innerHTML = "";
 }
 
 function checkall() {
@@ -130,19 +132,20 @@ function updateform() {
 }
 
 function exist() {
+    
     var table = document.getElementById("ptable");
-    deleteall();
+    
 
-    let arrpname = ['Apple Iphone', 'Redmi Note 7', 'Redmi Note 7 Pro', 'Lenovo Z2 Plus', 'Honor 7 Plus', 'Sony Bravia 80 cm (32 Inches) Smart TV (Black) ', 'Samsung Galaxy M30 (Gradation Blue, 4+64 GB)', 'OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)', 'Vivo V15 (Aqua Blue, 6GB RAM, 64GB Storage)','Apple Iphone', 'Redmi Note 7', 'Redmi Note 7 Pro', 'Lenovo Z2 Plus', 'Honor 7 Plus', 'Sony Bravia 80 cm (32 Inches) Smart TV (Black) ', 'Samsung Galaxy M30 (Gradation Blue, 4+64 GB)', 'OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)', 'Vivo V15 (Aqua Blue, 6GB RAM, 64GB Storage) '];
 
-    let arrseller = ['France', 'Germany', 'England', 'Spain', 'Belgium', 'Italy', 'Portugal', 'Irland', 'Luxembourg','France', 'Germany', 'England', 'Spain', 'Belgium', 'Italy', 'Portugal', 'Irland', 'Luxembourg'];
+    var arrpname = ['Apple Iphone', 'Redmi Note 7', 'Redmi Note 7 Pro', 'Lenovo Z2 Plus', 'Honor 7 Plus', 'Sony Bravia 80 cm (32 Inches) Smart TV (Black) ', 'Samsung Galaxy M30 (Gradation Blue, 4+64 GB)', 'OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)', 'Vivo V15 (Aqua Blue, 6GB RAM, 64GB Storage)','Apple Iphone', 'Redmi Note 7', 'Redmi Note 7 Pro', 'Lenovo Z2 Plus', 'Honor 7 Plus', 'Sony Bravia 80 cm (32 Inches) Smart TV (Black) ', 'Samsung Galaxy M30 (Gradation Blue, 4+64 GB)', 'OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)', 'Vivo V15 (Aqua Blue, 6GB RAM, 64GB Storage) '];
 
-    let arrprice = ['20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000','20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000'];
+    var arrseller = ['France', 'Germany', 'England', 'Spain', 'Belgium', 'Italy', 'Portugal', 'Irland', 'Luxembourg','France', 'Germany', 'England', 'Spain', 'Belgium', 'Italy', 'Portugal', 'Irland', 'Luxembourg'];
 
-    var rowCount = table.rows.length;
-    var concount = document.getElementById("pageno").value; //takes 5/10/15/20 - contentcount
+    var arrprice = ['20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000','20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000'];
 
-    for (i = 1; i <= concount ; i++) {
+    
+
+    for (i = 1; i <=5  ; i++) {
         var row = table.insertRow(i);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
