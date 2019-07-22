@@ -4,13 +4,14 @@
   box-sizing: border-box
 }
 
-<<<<<<< HEAD
 body,
 html {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: blanchedalmond;
+  
+  background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,.6)),url(../assets/3.jpeg);
+  background-size: cover;
 
 }
 
@@ -18,18 +19,6 @@ header,
 section,
 footer {
   overflow-x: hidden;
-=======
-body,html {
-height:100%;
-margin: 0;
-padding: 0;
-background-color: blanchedalmond;
-
-}
-
-header,section,footer {
-overflow-x:hidden;
->>>>>>> ebdd0913995b2f806e610af193b3c0509ba2ad5a
 
 }
 
@@ -49,12 +38,25 @@ overflow-x:hidden;
   padding: 0.75em;
   text-align: center;
   font-size: 2em;
-  color: mediumseagreen;
+  color: whitesmoke;
   font-family: var(--merrie);
+  
+}
+
+.indexhead {
+  padding: 0.75em;
+  text-align: center;
+  font-size: 2em;
+  color: teal;
+  font-family: var(--merrie);
+  
+}
+
+option{
+  background-color: gray;
 }
 
 
-<<<<<<< HEAD
 input[type=text],
 input[type=number],
 select,
@@ -62,9 +64,11 @@ textarea,
 input[type=password] {
   width: 100%;
   padding: 0.75em;
-  border: 1px solid #ccc;
+  border: 1px solid white;
   border-radius: 0.25em;
   resize: vertical;
+  background: transparent;
+  color: white;
 
 }
 
@@ -75,8 +79,12 @@ label {
 
 .container {
   border-radius: 0.3em;
-  background-color: #f2f2f2;
+  background-color: transparent;
+  opacity: 1;
   padding: 1.25em;
+  color: white;
+  
+  
 }
 
 .col-25 {
@@ -89,6 +97,7 @@ label {
   float: left;
   width: 75%;
   margin-top: 0.4em;
+  
 }
 
 /* Clear floats after the columns */
@@ -102,34 +111,6 @@ label {
 @media screen and (max-width: 600px) {
 
   .col-25,
-=======
-  input[type=text],input[type=number], select, textarea, input[type=password] {
-    width: 100%;
-    padding: 0.75em;
-    border: 1px solid #ccc;
-    border-radius: 0.25em;
-    resize: vertical;
-    
-  }
-  
-  label {
-    padding: 0.75em 0.75em 0.75em 0;
-    display: inline-block;
-  }
-  
-  .container {
-    border-radius: 0.3em;
-    background-color: #f2f2f2;
-    padding: 1.25em;
-  }
-  
-  .col-25 {
-    float: left;
-    width: 25%;
-    margin-top: 0.4em;
-  }
-  
->>>>>>> ebdd0913995b2f806e610af193b3c0509ba2ad5a
   .col-75 {
     width: 100%;
     margin-top: 0;
@@ -153,14 +134,16 @@ input[type=submit] {
 table,
 th,
 td {
-  border: 1px solid black;
+  border: 1px solid gold;
   text-align: center;
   font-size: 1.2em;
+  
 }
 
 table {
   width: 100%;
   margin: 0.5em;
+  
 }
 
 table .btnedit {
@@ -173,59 +156,6 @@ table .btndelete {
   cursor: pointer;
 }
 
-table .btnread {
-  color: orange;
-  cursor: pointer;
-}
-
-.card {
-  box-shadow: 0 0.4em 0.5em 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  width: 40%;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.card:hover {
-  box-shadow: 0 0.5em 1em 0 rgba(0, 0, 0, 0.2);
-}
-
-.container {
-  padding: 0.2em 1em;
-}
-
-.form1 {
-  border: 0.4em solid white;
-}
-
-/* Set a style for all buttons */
-.buttonsubmit {
-  background-color: goldenrod;
-  color: white;
-  padding: 1em 1.25em;
-  margin: 0.5em 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
-
-/* Add a hover effect for buttons */
-.buttonsubmit:hover {
-  opacity: 0.8;
-}
-
-
-/* Add padding to containers */
-.container {
-  padding: 1em;
-  
-}
-<<<<<<< HEAD
-=======
-
->>>>>>> ebdd0913995b2f806e610af193b3c0509ba2ad5a
-
-
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
@@ -239,29 +169,22 @@ table .btnread {
   }
 }
 
-<<<<<<< HEAD
 .login {
   margin-right: auto;
   margin-left: auto;
   text-align: center;
   padding: 1em;
   font-family: var(--mountains);
-  color: #4CAF50;
-=======
-table .btnedit
-{
-color: lightgreen;
-cursor: pointer;
->>>>>>> ebdd0913995b2f806e610af193b3c0509ba2ad5a
+  
 }
 
 .logina {
   padding: 0.5em;
   background-color: #4CAF50;
   cursor: pointer;
+
 }
 
-<<<<<<< HEAD
 #myinput {
 
   max-width: 20%;
@@ -269,52 +192,55 @@ cursor: pointer;
   font-size: 1em;
 }
 
-=======
-table .btnread
-{
-    color: orange;
-    cursor: pointer;
-}
 
-.card {
-  box-shadow: 0 0.4em 0.5em 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  width: 40%;
-  margin-right:auto;
-  margin-left: auto;
-}
 
-.card:hover {
-  box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.2);
-}
-
-.container {
-  padding: 0.2em 1em;
-}
-.form1 {
-  border: 0.4em solid white;
-}
-
-/* Set a style for all buttons */
-.buttonsubmit {
-  background-color: goldenrod;
-  color: white;
-  padding: 1em 1.25em;
-  margin: 0.5em 0;
-  border: none;
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 0.6em 1.2em;
+  background-color: #f44336;
   cursor: pointer;
-  width: 100%;
-}
-
-/* Add a hover effect for buttons */
-.buttonsubmit:hover {
-  opacity: 0.8;
 }
 
 
-/* Add padding to containers */
-.container {
-  padding: 1em;
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  
+  padding-top: 60px;
+  color: black;
+  
+}
+
+/* Modal Content/Box */
+.modal-content {
+  
+  background-color: chocolate;
+  margin: 10% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 0.1em solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  
+  
+}
+
+.loginform{
+  color: black;
+  border-color: black;
+  border-radius: 0.5em;
+}
+
+#uname,#psw{
+  color: black;
+  background-origin: padding-box;
 }
 
 
@@ -322,33 +248,71 @@ table .btnread
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
-    display: block;
-    float: none;
-  }
-  .cancelbtn {
-    width: 100%;
+     display: block;
+     float: none;
   }
 }
 
-.login{
- margin-right:auto;
- margin-left:auto;
- text-align: center;
- padding: 1em;
- font-family: var(--mountains);
- color: #4CAF50;
-}
 
- .logina{
-
-  
-  padding:0.5em;
+.btnlogin{
+  background-color: goldenrod;
  
- background-color: #4CAF50;
-
-  
- cursor: pointer;
-
+  padding: 1em 1.25em;
+  margin: 0.5em 0;
+  border: none;
+  cursor: pointer;
+  max-width: 20%;
+  margin-right: auto;
+  margin-left: auto;
 
 }
->>>>>>> ebdd0913995b2f806e610af193b3c0509ba2ad5a
+
+
+button {
+  margin:auto;
+  display:block;
+  border-radius: 0.5em;
+}
+
+a{
+  margin:auto;
+  display:block;
+  max-width: 25%;
+  width:auto;
+  text-align: center;
+  padding: 1em;
+  border-radius: 0.5em;
+}
+
+.center {
+  text-align: center;
+}
+
+#pagination {
+  display: inline-block;
+}
+
+#pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+}
+
+#pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+#pageno{
+  max-width: 10%;
+  display: inline;
+  margin: 1em;  
+ 
+}
