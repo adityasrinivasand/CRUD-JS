@@ -1,4 +1,11 @@
+var selectedRow = null;
+var i;
+var editicon = '<i onClick = "edit(this)" class = "fas fa-edit btnedit"></i>';
+var deleteicon = '<i onClick = "deletee(this)" class = "fas fa-trash btndelete"></i>';
+var check = '<input type="checkbox" onClick = "checkbox(this)" name="checkbox" value="checkbox">'
+
 function create() {
+
 
     var formdata = readformdata();
     insert(formdata);
@@ -6,9 +13,6 @@ function create() {
 
 }
 
-var editicon = '<i onClick = "edit(this)" class = "fas fa-edit btnedit"></i>';
-var deleteicon = '<i onClick = "deletee(this)" class = "fas fa-trash btndelete"></i>';
-var readicon = '<i onClick = "read(this)"class="fab fa-readme btnread"></i>';
 
 function readformdata() {
     var formdata = {};
@@ -18,7 +22,7 @@ function readformdata() {
     formdata["price"] = document.getElementById("price").value;
     formdata["edit"] = editicon;
     formdata["delete"] = deleteicon;
-    formdata["read"] = readicon;
+
     return formdata;
 }
 
@@ -34,13 +38,15 @@ function insert(data) {
     var cell5 = newrow.insertCell(4);
     var cell6 = newrow.insertCell(5);
     var cell7 = newrow.insertCell(6);
-    cell1.innerHTML = data.id;
-    cell2.innerHTML = data.pname;
-    cell3.innerHTML = data.seller;
-    cell4.innerHTML = data.price;
-    cell5.innerHTML = data.edit;
-    cell6.innerHTML = data.delete;
-    cell7.innerHTML = data.read;
+
+    cell1.innerHTML = check;
+    cell2.innerHTML = data.id;
+    cell3.innerHTML = data.pname;
+    cell4.innerHTML = data.seller;
+    cell5.innerHTML = data.price;
+    cell6.innerHTML = data.edit;
+    cell7.innerHTML = data.delete;
+
 }
 
 function resetform() {
@@ -50,11 +56,10 @@ function resetform() {
     document.getElementById("price").value = "";
 }
 
-var selectedRow = null;
-var i;
+
 
 function edit(td) {
-
+    document.getElementById("btn-create").disabled = true;
     selectedRow = td.parentElement.parentElement;
     document.getElementById("id").value = selectedRow.cells[0].innerHTML;
     document.getElementById("pname").value = selectedRow.cells[1].innerHTML;
@@ -73,11 +78,47 @@ function deletee(td) {
     }
 }
 
-function deleteall() {
-    for (var i = document.getElementById("ptable").rows.length; i > 1; i--) {
-        document.getElementById("ptable").deleteRow(i - 1);
+function deleteselected() {
+
+    var table = document.getElementById("ptable");
+
+    var rowCount = table.rows.length;
+
+    for (var i = 1; i < rowCount; i++) {
+        var row = table.rows[i];
+        var chkbox = row.cells[0].childNodes[0];
+        if (null != chkbox && true == chkbox.checked) {
+            table.deleteRow(i);
+            rowCount--;
+            i--;
+        }
+
+    }
+
+}
+
+function deleteall()
+{
+    var table =document.getElementById("ptable");
+
+    for(var i=1;i< table.rows.length;i++)
+    table.deleteRow(i);
+}
+
+function checkall() {
+    var checkboxes = document.getElementsByTagName('input');
+    var val = null;
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].type == 'checkbox') {
+            if (val === null) val = checkboxes[i].checked;
+            checkboxes[i].checked = val;
+        }
     }
 }
+
+
+
+
 
 function updateform() {
     selectedRow.cells[0].innerHTML = document.getElementById("id").value;
@@ -85,18 +126,23 @@ function updateform() {
     selectedRow.cells[2].innerHTML = document.getElementById("seller").value;
     selectedRow.cells[3].innerHTML = document.getElementById("price").value;
     resetform();
+    document.getElementById("btn-create").disabled = false;
 }
 
 function exist() {
     var table = document.getElementById("ptable");
+    deleteall();
 
-    let arrpname = ['Apple Iphone', 'Redmi Note 7', 'Redmi Note 7 Pro', 'Lenovo Z2 Plus', 'Honor 7 Plus', 'Sony Bravia 80 cm (32 Inches) Smart TV (Black) ', 'Samsung Galaxy M30 (Gradation Blue, 4+64 GB)', 'OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)', 'Vivo V15 (Aqua Blue, 6GB RAM, 64GB Storage) '];
+    let arrpname = ['Apple Iphone', 'Redmi Note 7', 'Redmi Note 7 Pro', 'Lenovo Z2 Plus', 'Honor 7 Plus', 'Sony Bravia 80 cm (32 Inches) Smart TV (Black) ', 'Samsung Galaxy M30 (Gradation Blue, 4+64 GB)', 'OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)', 'Vivo V15 (Aqua Blue, 6GB RAM, 64GB Storage)','Apple Iphone', 'Redmi Note 7', 'Redmi Note 7 Pro', 'Lenovo Z2 Plus', 'Honor 7 Plus', 'Sony Bravia 80 cm (32 Inches) Smart TV (Black) ', 'Samsung Galaxy M30 (Gradation Blue, 4+64 GB)', 'OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)', 'Vivo V15 (Aqua Blue, 6GB RAM, 64GB Storage) '];
 
-    let arrseller = ['France', 'Germany', 'England', 'Spain', 'Belgium', 'Italy', 'Portugal', 'Irland', 'Luxembourg'];
+    let arrseller = ['France', 'Germany', 'England', 'Spain', 'Belgium', 'Italy', 'Portugal', 'Irland', 'Luxembourg','France', 'Germany', 'England', 'Spain', 'Belgium', 'Italy', 'Portugal', 'Irland', 'Luxembourg'];
 
-    let arrprice = ['20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000',];
+    let arrprice = ['20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000','20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000'];
 
-    for (i = 1; i <= 9; i++) {
+    var rowCount = table.rows.length;
+    var concount = document.getElementById("pageno").value; //takes 5/10/15/20 - contentcount
+
+    for (i = 1; i <= concount ; i++) {
         var row = table.insertRow(i);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
@@ -105,15 +151,19 @@ function exist() {
         var cell5 = row.insertCell(4);
         var cell6 = row.insertCell(5);
         var cell7 = row.insertCell(6);
-        cell1.innerHTML = i;
-        cell2.innerHTML = arrpname[i - 1];
-        cell3.innerHTML = arrseller[i - 1];
-        cell4.innerHTML = arrprice[i - 1];
-        cell5.innerHTML = editicon;
-        cell6.innerHTML = deleteicon;
-        cell7.innerHTML = readicon;
+
+        cell1.innerHTML = check;
+        cell2.innerHTML = i;
+        cell3.innerHTML = arrpname[i - 1];
+        cell4.innerHTML = arrseller[i - 1];
+        cell5.innerHTML = arrprice[i - 1];
+        cell6.innerHTML = editicon;
+        cell7.innerHTML = deleteicon;
+
     }
 }
+
+
 
 
 function login() {
@@ -129,7 +179,6 @@ function login() {
         window.location.assign("../source/home.html");
     }
 
-<<<<<<< HEAD
 }
 
 function search() {
@@ -139,44 +188,83 @@ function search() {
     table = document.getElementById("ptable");
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[1];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
+        td = tr[i].getElementsByTagName("td")[2];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
         }
-      }       
     }
-  }
-  
-/*
- var table = new Tabulator("#ptable", {
-	data:tabledata,           //load row data from array
-	layout:"fitColumns",      //fit columns to width of table
-	responsiveLayout:"hide",  //hide columns that dont fit on the table
-	tooltips:true,            //show tool tips on cells
-	addRowPos:"top",          //when adding a new row, add it to the top of the table
-	history:true,             //allow undo and redo actions on the table
-	pagination:"local",       //paginate the data
-	paginationSize:7,         //allow 7 rows per page of data
-	movableColumns:true,      //allow column order to be changed
-	resizableRows:true,       //allow row order to be changed
-	initialSort:[             //set the initial sort order of the data
-		{column:"pname", dir:"asc"},
-	],
-	columns:[                 //define the table columns
-		{title:"id", field:"id", editor:"input"},
-		{title:"pname", field:"pname", align:"left", formatter:"progress", editor:true},
-		{title:"Gender", field:"gender", width:95, editor:"select", editorParams:{values:["male", "female"]}},
-		{title:"Rating", field:"rating", formatter:"star", align:"center", width:100, editor:true},
-		{title:"Color", field:"col", width:130, editor:"input"},
-		{title:"Date Of Birth", field:"dob", width:130, sorter:"date", align:"center"},
-		{title:"Driver", field:"car", width:90,  align:"center", formatter:"tickCross", sorter:"boolean", editor:true},
-	],
-}); */
-
-=======
 }
->>>>>>> ebdd0913995b2f806e610af193b3c0509ba2ad5a
+
+var modal = document.getElementById('modalid');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+/*
+active(){
+    var header = document.getElementById("pagination");
+    var btns = header.getElementsByClassName("no");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+         this.className += " active";
+  });
+}
+
+}
+*/
+/*
+page()
+{
+    var table = document.getElementById("ptable");
+    var rowCount = table.rows.length;
+    var concount = document.getElementById("pageno").value; //takes 5/10/15/20 - contentcount
+    var k=1;
+    alert("yesy");
+    
+    while(k<rowCount){
+        for (; k <= 5 ; i++) {
+            var row = table.insertRow(i);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            var cell7 = row.insertCell(6);
+    
+            cell1.innerHTML = check;
+            cell2.innerHTML = i;
+            cell3.innerHTML = arrpname[i - 1];
+            cell4.innerHTML = arrseller[i - 1];
+            cell5.innerHTML = arrprice[i - 1];
+            cell6.innerHTML = editicon;
+            cell7.innerHTML = deleteicon;
+    
+        }
+
+        concount += concount;
+        
+
+    }
+
+        
+
+
+
+  
+
+    
+
+}
+*/
