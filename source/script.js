@@ -144,9 +144,6 @@ function updateform() {
     selectedRow.cells[2].innerHTML = document.getElementById("pname").value;
     selectedRow.cells[3].innerHTML = document.getElementById("seller").value;
     selectedRow.cells[4].innerHTML = document.getElementById("price").value;
-   
-    
-
     resetform();
     document.getElementById("btn-create").disabled = false;
     

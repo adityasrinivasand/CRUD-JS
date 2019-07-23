@@ -6,13 +6,14 @@ function onupdate(pageno = 1) {
     deleteall();
     concount = document.getElementById("pageno").value; //takes 5/10/15/20 - contentcount
 
+    
     var j = 1;
 
     j = (concount * (pageno-1)) + 1; //sending the first element of the table to be displayed
     print(j);
 
     if (pageno == 1) {
-        document.getElementsByTagName('a')[0].removeAttribute('href');
+        document.getElementById("pre").disabled = true;
     }     
 
 
