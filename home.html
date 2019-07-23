@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, intial-scale =1.0">
+  <title>CRUD with JS</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet">
+
+  <script type="text/javascript" src="../source/script.js"></script>
+  <script type="text/javascript" src="../source/pagination.js"></script>
+</head>
+
+<body onload="exist()">
+  
+  <section class="center">
+    <h1 class="el"><i class="fas fa-plug"></i>Electronic Store</h1>
+
+    <div class="container">
+      <form autocomplete="off" class="form1">
+        <div class="row">
+          <div class="col-25">
+            <label for="id">ID</label>
+          </div>
+          <div class="col-75">
+            <input type="number" id="id" name="id" placeholder="ID (only numbers) " required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-25">
+            <label for="pname">Product Name</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="pname" name="pname" placeholder="Product Name" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-25">
+            <label for="seller">Seller</label>
+          </div>
+          <div class="col-75">
+            
+            <input type="text" name="seller" id="seller" name="seller" placeholder="Seller" required>
+                
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-25">
+            <label for="price">Price</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="price" name="price" placeholder="Price" required>
+
+          </div>
+        </div>
+
+        
+
+      </form>
+    </div>
+
+  </section>
+
+
+
+
+  <!-- Create, Update , read and Delete-->
+
+  <section class="buttons">
+    
+    <input type="submit" onclick="create()"  value="Create" id="btn-create">
+    <input type="submit" onclick="updateform()" value="Update" id="btn-update">
+    <input type="submit" onclick="deleteselected()" value="Delete Selected" id="btn-delete">
+
+    <input type="text" id="myinput" onkeyup="search()" placeholder="Search">
+
+  </section>
+
+
+  <div class="container">
+
+    <table id="ptable">
+      <thead>
+        <tr>
+          <th><input type="checkbox" name="check" id="checkbox" value="checkbox" onchange="checkall()"></th>
+          <th>ID</th>
+          <th>Product Name</th>
+          <th>Seller</th>
+          <th>Price</th>
+          <th>Edit</th>
+          <th>Delete</th>
+          <th>Read</th>
+          
+        </tr>
+      </thead>
+
+      <tbody></tbody>
+
+    </table>
+    
+  </div>
+  <section class="bottom">
+
+      <div class="center">
+          <div id="pagination" onclick="activefunction(event)" >
+          <button type="button" id="pre" onClick="page_click(this.id)"><</button>
+          <button type="button" id="1" onClick="page_click(this.id)"class="active" default value="1">1</button>
+          <button type="button" id="2" onClick="page_click(this.id)" value="2">2</button>
+          <button type="button" id="3" onClick="page_click(this.id)" value="3">3</button>
+          <button type="button" id="4" onClick="page_click(this.id)" value="4">4</button>
+          <button type="button" id="5" onClick="page_click(this.id)" value="5">5</button>
+          <button type="button" id="6" onClick="page_click(this.id)" value="6">6</button>
+          <button type="button" id="next" onClick="page_click(this.id)">></button>
+          
+          </div>
+      </div>
+
+      <select id="pageno" onchange="onupdate()">
+          <option selected="selected" value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+      </select>
+
+      <input type="text" name="go" id="go" name="go" placeholder="Go To Page" >
+
+ 
+
+  </section>
+  
+  
+  
+
+</body>
+
+</html>
