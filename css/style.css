@@ -35,7 +35,7 @@ footer {
 }
 
 .el {
-  padding: 0.75em;
+  padding: 0.25em;
   text-align: center;
   font-size: 2em;
   color: whitesmoke;
@@ -63,7 +63,7 @@ select,
 textarea,
 input[type=password] {
   width: 100%;
-  padding: 0.75em;
+  padding: 0.5em;
   border: 1px solid white;
   border-radius: 0.25em;
   resize: vertical;
@@ -81,10 +81,8 @@ label {
   border-radius: 0.3em;
   background-color: transparent;
   opacity: 1;
-  padding: 1.25em;
-  color: white;
-  
-  
+  padding: 1em;
+  color: white; 
 }
 
 .col-25 {
@@ -127,7 +125,7 @@ input[type=submit] {
   margin-right: auto;
   margin-left: auto;
   text-align: center;
-  padding: 0.5em;
+  padding: 0.25em;
 }
 
 
@@ -138,6 +136,10 @@ td {
   text-align: center;
   font-size: 1.2em;
   
+}
+
+th{
+  color: blanchedalmond;
 }
 
 table {
@@ -153,6 +155,11 @@ table .btnedit {
 
 table .btndelete {
   color: red;
+  cursor: pointer;
+}
+
+table .btnread{
+  color: yellow;
   cursor: pointer;
 }
 
@@ -224,7 +231,7 @@ table .btndelete {
 /* Modal Content/Box */
 .modal-content {
   
-  background-color: chocolate;
+  background-color: lightblue;
   margin: 10% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
   border: 0.1em solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
@@ -316,3 +323,17 @@ a{
   margin: 1em;  
  
 }
+
+#go{
+  max-width: 10%;
+  float: right;
+  margin: 1em;
+  margin-right: 1em;
+
+}
+
+::placeholder{
+  color: white;
+  
+}
+
