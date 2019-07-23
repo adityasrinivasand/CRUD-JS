@@ -277,7 +277,7 @@ table .btnread{
 
 button {
   margin:auto;
-  display:block;
+  display:inline-block;
   border-radius: 0.5em;
 }
 
