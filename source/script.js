@@ -2,7 +2,17 @@ var selectedRow = null;
 var i=0;
 var editicon = '<i onClick = "edit(this)" class = "fas fa-edit btnedit"></i>';
 var deleteicon = '<i onClick = "deletee(this)" class = "fas fa-trash btndelete"></i>';
-var check = '<input type="checkbox" onClick = "checkbox(this)" name="checkbox" value="checkbox">'
+var readicon = '<i onClick = "read(this)" class="fab fa-readme btnread" id="btnread"></i>';
+var check = '<input type="checkbox"  name="checkbox" value="checkbox">';
+var arrpname = ['Apple Iphone', 'Redmi Note 7', 'Redmi Note 7 Pro', 'Lenovo Z2 Plus', 'Honor 7 Plus', 'Sony Bravia 80 cm (32 Inches) Smart TV (Black) ', 'Samsung Galaxy M30 (Gradation Blue, 4+64 GB)', 'OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)', 'Vivo V15 (Aqua Blue, 6GB RAM, 64GB Storage)','Apple Iphone', 'Redmi Note 7', 'Redmi Note 7 Pro', 'Lenovo Z2 Plus', 'Honor 7 Plus', 'Sony Bravia 80 cm (32 Inches) Smart TV (Black) ', 'Samsung Galaxy M30 (Gradation Blue, 4+64 GB)', 'OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)', 'Vivo V15 (Aqua Blue, 6GB RAM, 64GB Storage) '];
+
+var arrseller = ['France', 'Germany', 'England', 'Spain', 'Belgium', 'Italy', 'Portugal', 'Irland', 'Luxembourg','France', 'Germany', 'England', 'Spain', 'Belgium', 'Italy', 'Portugal', 'Irland', 'Luxembourg'];
+
+var arrprice = ['20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000','20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000'];
+
+
+
+var l = arrpname.length;
 
 
 
@@ -11,6 +21,9 @@ function create() {
     var formdata = readformdata();
     insert(formdata);
     resetform();
+    page_click(1);
+    activefunction(1);
+    onupdate();
 
 }
 
@@ -23,6 +36,7 @@ function readformdata() {
     formdata["price"] = document.getElementById("price").value;
     formdata["edit"] = editicon;
     formdata["delete"] = deleteicon;
+    formdata["read"] = readicon;
 
     return formdata;
 }
@@ -39,7 +53,9 @@ function insert(data) {
     var cell5 = newrow.insertCell(4);
     var cell6 = newrow.insertCell(5);
     var cell7 = newrow.insertCell(6);
-    data.id = i;
+    var cell8 = newrow.insertCell(7);
+
+    data.id=l+1;
     cell1.innerHTML = check;
     cell2.innerHTML = data.id;
     cell3.innerHTML = data.pname;
@@ -47,11 +63,13 @@ function insert(data) {
     cell5.innerHTML = data.price;
     cell6.innerHTML = data.edit;
     cell7.innerHTML = data.delete; 
+    cell8.innerHTML = data.read; 
 
 
     arrpname.push(data.pname);
     arrseller.push(data.seller);
     arrprice.push(data.price);
+    l=l+1;
 
 }
 
@@ -78,6 +96,7 @@ function edit(td) {
 function deletee(td) {
     if (confirm('Are you Sure ?')) {
         row = td.parentElement.parentElement;
+        count = td.parentElement;
         document.getElementById("ptable").deleteRow(row.rowIndex);
         resetform();
 
@@ -103,12 +122,7 @@ function deleteselected() {
 
 }
 
-function deleteall()
-{
-    var table =document.getElementById("ptable");
 
-    table.innerHTML = "";
-}
 
 function checkall() {
     var checkboxes = document.getElementsByTagName('input');
@@ -130,15 +144,13 @@ function updateform() {
     selectedRow.cells[2].innerHTML = document.getElementById("pname").value;
     selectedRow.cells[3].innerHTML = document.getElementById("seller").value;
     selectedRow.cells[4].innerHTML = document.getElementById("price").value;
+   
+    
+
     resetform();
     document.getElementById("btn-create").disabled = false;
+    
 }
-
-var arrpname = ['Apple Iphone', 'Redmi Note 7', 'Redmi Note 7 Pro', 'Lenovo Z2 Plus', 'Honor 7 Plus', 'Sony Bravia 80 cm (32 Inches) Smart TV (Black) ', 'Samsung Galaxy M30 (Gradation Blue, 4+64 GB)', 'OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)', 'Vivo V15 (Aqua Blue, 6GB RAM, 64GB Storage)','Apple Iphone', 'Redmi Note 7', 'Redmi Note 7 Pro', 'Lenovo Z2 Plus', 'Honor 7 Plus', 'Sony Bravia 80 cm (32 Inches) Smart TV (Black) ', 'Samsung Galaxy M30 (Gradation Blue, 4+64 GB)', 'OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)', 'Vivo V15 (Aqua Blue, 6GB RAM, 64GB Storage) '];
-
-    var arrseller = ['France', 'Germany', 'England', 'Spain', 'Belgium', 'Italy', 'Portugal', 'Irland', 'Luxembourg','France', 'Germany', 'England', 'Spain', 'Belgium', 'Italy', 'Portugal', 'Irland', 'Luxembourg'];
-
-    var arrprice = ['20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000','20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000'];
 
 
 function exist() {
@@ -155,6 +167,7 @@ function exist() {
         var cell5 = row.insertCell(4);
         var cell6 = row.insertCell(5);
         var cell7 = row.insertCell(6);
+        var cell8 = row.insertCell(7);
 
         cell1.innerHTML = check;
         cell2.innerHTML = i;
@@ -163,6 +176,7 @@ function exist() {
         cell5.innerHTML = arrprice[i - 1];
         cell6.innerHTML = editicon;
         cell7.innerHTML = deleteicon;
+        cell8.innerHTML = readicon;
 
     }
 }
@@ -204,7 +218,7 @@ function search() {
     }
 }
 
-var modal = document.getElementById('modalid');
+var modal = document.getElementById('readmodal');
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
@@ -213,62 +227,3 @@ window.onclick = function (event) {
     }
 }
 
-/*
-active(){
-    var header = document.getElementById("pagination");
-    var btns = header.getElementsByClassName("no");
-    for (var i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", function() {
-        var current = document.getElementsByClassName("active");
-        current[0].className = current[0].className.replace(" active", "");
-         this.className += " active";
-  });
-}
-
-}
-*/
-/*
-page()
-{
-    var table = document.getElementById("ptable");
-    var rowCount = table.rows.length;
-    var concount = document.getElementById("pageno").value; //takes 5/10/15/20 - contentcount
-    var k=1;
-    alert("yesy");
-    
-    while(k<rowCount){
-        for (; k <= 5 ; i++) {
-            var row = table.insertRow(i);
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2);
-            var cell4 = row.insertCell(3);
-            var cell5 = row.insertCell(4);
-            var cell6 = row.insertCell(5);
-            var cell7 = row.insertCell(6);
-    
-            cell1.innerHTML = check;
-            cell2.innerHTML = i;
-            cell3.innerHTML = arrpname[i - 1];
-            cell4.innerHTML = arrseller[i - 1];
-            cell5.innerHTML = arrprice[i - 1];
-            cell6.innerHTML = editicon;
-            cell7.innerHTML = deleteicon;
-    
-        }
-
-        concount += concount;
-        
-
-    }
-
-        
-
-
-
-  
-
-    
-
-}
-*/

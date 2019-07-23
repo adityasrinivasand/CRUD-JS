@@ -72,7 +72,7 @@
 
   <section class="buttons">
     
-    <input type="submit" onclick="create()" value="Create" id="btn-create">
+    <input type="submit" onclick="create()"  value="Create" id="btn-create">
     <input type="submit" onclick="updateform()" value="Update" id="btn-update">
     <input type="submit" onclick="deleteselected()" value="Delete Selected" id="btn-delete">
 
@@ -93,6 +93,7 @@
           <th>Price</th>
           <th>Edit</th>
           <th>Delete</th>
+          <th>Read</th>
           
         </tr>
       </thead>
@@ -103,16 +104,17 @@
     
   </div>
   <section class="bottom">
+
       <div class="center">
-          <div id="pagination" >
-          <a href="#" class="no"><</a>
-          <a href="#" class="no">1</a>
-          <a href="#" class="no">2</a>
-          <a href="#" class="no">3</a>
-          <a href="#" class="no">4</a>
-          <a href="#" class="no">5</a>
-          <a href="#" class="no">6</a>
-          <a href="#" class="no">></a>
+          <div id="pagination" onclick="activefunction(event)" >
+          <a href="#" id="pre" onClick="page_click(this.id)"><</a>
+          <a href="#" id="1" onClick="page_click(this.id)"class="active" default >1</a>
+          <a href="#" id="2" onClick="page_click(this.id)">2</a>
+          <a href="#" id="3" onClick="page_click(this.id)">3</a>
+          <a href="#" id="4" onClick="page_click(this.id)">4</a>
+          <a href="#" id="5" onClick="page_click(this.id)">5</a>
+          <a href="#" id="6" onClick="page_click(this.id)">6</a>
+          <a href="#" id="next" onClick="page_click(this.id)">></a>
           </div>
       </div>
 
@@ -123,7 +125,13 @@
           <option value="20">20</option>
       </select>
 
+      <input type="text" name="go" id="go" name="go" placeholder="Go To Page" >
+
+ 
+
   </section>
+  
+  
   
 
 </body>
