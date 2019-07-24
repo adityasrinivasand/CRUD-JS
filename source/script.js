@@ -2,42 +2,35 @@ var selectedRow = null;
 var i=0;
 var editicon = '<i onClick = "edit(this)" class = "fas fa-edit btnedit"></i>';
 var deleteicon = '<i onClick = "deletee(this)" class = "fas fa-trash btndelete"></i>';
-var readicon = '<i onClick = "read(this)" class="fab fa-readme btnread" id="btnread"></i>';
+var readicon = '<i  id="btnread" class="fab fa-readme btnread" ></i>';
 var check = '<input type="checkbox"  name="checkbox" value="checkbox">';
 var arrpname = ['Apple Iphone', 'Redmi Note 7', 'Redmi Note 7 Pro', 'Lenovo Z2 Plus', 'Honor 7 Plus', 'Sony Bravia 80 cm (32 Inches) Smart TV (Black) ', 'Samsung Galaxy M30 (Gradation Blue, 4+64 GB)', 'OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)', 'Vivo V15 (Aqua Blue, 6GB RAM, 64GB Storage)','Apple Iphone', 'Redmi Note 7', 'Redmi Note 7 Pro', 'Lenovo Z2 Plus', 'Honor 7 Plus', 'Sony Bravia 80 cm (32 Inches) Smart TV (Black) ', 'Samsung Galaxy M30 (Gradation Blue, 4+64 GB)', 'OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)', 'Vivo V15 (Aqua Blue, 6GB RAM, 64GB Storage) '];
 
-var arrseller = ['France', 'Germany', 'England', 'Spain', 'Belgium', 'Italy', 'Portugal', 'Irland', 'Luxembourg','France', 'Germany', 'England', 'Spain', 'Belgium', 'Italy', 'Portugal', 'Irland', 'Luxembourg'];
+var arrseller = ['Amazon', 'Flipkart', 'EBay', 'Snapdeal', 'Amazon', 'Flipkart', 'EBay', 'Snapdeal', 'Flipkart','Amazon', 'Flipkart', 'EBay', 'Snapdeal', 'Amazon', 'Flipkart', 'EBay', 'Snapdeal', 'Flipkart'];
 
 var arrprice = ['20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000','20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000'];
 
-
-
 var l = arrpname.length;
-
-
-
 
 function create() {
     var formdata = readformdata();
     insert(formdata);
     resetform();
-    page_click(1);
+    onupdate("create");
     activefunction(1);
-    onupdate();
 
 }
 
 
 function readformdata() {
     var formdata = {};
-    formdata["id"] = document.getElementById("id").value;
+    
     formdata["pname"] = document.getElementById("pname").value;
     formdata["seller"] = document.getElementById("seller").value;
     formdata["price"] = document.getElementById("price").value;
     formdata["edit"] = editicon;
     formdata["delete"] = deleteicon;
     formdata["read"] = readicon;
-
     return formdata;
 }
 
@@ -74,7 +67,7 @@ function insert(data) {
 }
 
 function resetform() {
-    document.getElementById("id").value = "";
+    
     document.getElementById("pname").value = "";
     document.getElementById("seller").value = "";
     document.getElementById("price").value = "";
@@ -85,11 +78,15 @@ function resetform() {
 function edit(td) {
     document.getElementById("btn-create").disabled = true;
     selectedRow = td.parentElement.parentElement;
-    document.getElementById("id").value = selectedRow.cells[1].innerHTML;
+   
     document.getElementById("pname").value = selectedRow.cells[2].innerHTML;
     document.getElementById("seller").value = selectedRow.cells[3].innerHTML;
     document.getElementById("price").value = selectedRow.cells[4].innerHTML;
 
+    
+
+
+    
 }
 
 
@@ -98,6 +95,9 @@ function deletee(td) {
         row = td.parentElement.parentElement;
         count = td.parentElement;
         document.getElementById("ptable").deleteRow(row.rowIndex);
+        arrpname.reduce(row,1);
+        arrseller.reduce(row,1);
+        arrprice.reduce(row,1);
         resetform();
 
     }
@@ -140,10 +140,11 @@ function checkall() {
 
 
 function updateform() {
-    selectedRow.cells[1].innerHTML = document.getElementById("id").value;
+    
     selectedRow.cells[2].innerHTML = document.getElementById("pname").value;
     selectedRow.cells[3].innerHTML = document.getElementById("seller").value;
     selectedRow.cells[4].innerHTML = document.getElementById("price").value;
+
     resetform();
     document.getElementById("btn-create").disabled = false;
     
@@ -192,6 +193,8 @@ function login() {
 
     if ((str3 == str1) && (str4 == str2)) {
         window.location.assign("../source/home.html");
+    } else {
+        alert("User Name or Password is Wrong, Kindly check it !")
     }
 
 }
@@ -212,15 +215,50 @@ function search() {
                 tr[i].style.display = "none";
             }
         }
+        
     }
 }
 
-var modal = document.getElementById('readmodal');
+function productvalidate(){
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+    var name = document.forms["productform"]["pname"].value;
+    var price = document.forms["productform"]["price"].value;
+    var seller = document.forms["productform"]["seller"].value;
+    var f=0; 
+    if (name == "") {
+      alert("Product Name must be filled out");
+      return false; f=1; 
     }
+
+    if (price == "") {
+        alert("Price must be filled out");
+        return false; f=1; 
+    }
+
+    if (seller == "") {
+        alert("Seller must be Choosen out");
+        return false; f=1; 
+    }
+
+    if( f==0 )
+    create();
+}
+
+function loginvalidate(){
+    var name = document.forms["loginform"]["uname"].value;
+    var pass = document.forms["loginform"]["psw"].value;
+    var f=0; 
+    if (name == "") {
+      alert("User Name must be filled out");
+      return false; f=1; 
+    }
+
+    if (pass == "") {
+        alert("Password must be filled out");
+        return false; f=1; 
+    }
+
+    if( f==0 )
+    login();
 }
 
