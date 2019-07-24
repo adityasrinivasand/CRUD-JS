@@ -2,7 +2,7 @@ var selectedRow = null;
 var i=0;
 var editicon = '<i onClick = "edit(this)" class = "fas fa-edit btnedit"></i>';
 var deleteicon = '<i onClick = "deletee(this)" class = "fas fa-trash btndelete"></i>';
-var readicon = '<i  id="btnread" class="fab fa-readme btnread" ></i>';
+var readicon = '<i  onClick="read(this)" id="btnread" class="fab fa-readme btnread" ></i>';
 var check = '<input type="checkbox"  name="checkbox" value="checkbox">';
 var arrpname = ['Apple Iphone', 'Redmi Note 7', 'Redmi Note 7 Pro', 'Lenovo Z2 Plus', 'Honor 7 Plus', 'Sony Bravia 80 cm (32 Inches) Smart TV (Black) ', 'Samsung Galaxy M30 (Gradation Blue, 4+64 GB)', 'OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)', 'Vivo V15 (Aqua Blue, 6GB RAM, 64GB Storage)','Apple Iphone', 'Redmi Note 7', 'Redmi Note 7 Pro', 'Lenovo Z2 Plus', 'Honor 7 Plus', 'Sony Bravia 80 cm (32 Inches) Smart TV (Black) ', 'Samsung Galaxy M30 (Gradation Blue, 4+64 GB)', 'OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)', 'Vivo V15 (Aqua Blue, 6GB RAM, 64GB Storage) '];
 
@@ -118,7 +118,8 @@ function deleteselected() {
             i--;
         }
 
-    }
+    } 
+    
 
 }
 
@@ -262,3 +263,34 @@ function loginvalidate(){
     login();
 }
 
+function read(td){
+
+    selectedRow = td.parentElement.parentElement;
+    var modal = document.getElementById("myModal");
+
+var span = document.getElementsByClassName("close")[0];
+  modal.style.display = "block";
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+
+document.getElementById("disid").innerHTML =  selectedRow.cells[1].innerHTML;
+document.getElementById("dispro").innerHTML =  selectedRow.cells[2].innerHTML;
+document.getElementById("dissell").innerHTML =  selectedRow.cells[3].innerHTML;
+document.getElementById("disprice").innerHTML =  selectedRow.cells[4].innerHTML;
+
+
+
+}
