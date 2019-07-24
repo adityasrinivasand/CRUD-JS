@@ -12,18 +12,10 @@
 
 <body>
     <script src="../source/script.js"></script>
-
-    
-
-    
         
-    <h1 class="indexhead"><i class="fas fa-plug"></i>Electronic Store</h1>
+    <h1 class="el"><i class="fas fa-plug"></i>Electronic Store</h1>
 
-    <button onclick="document.getElementById('modalid').style.display='block'" class="btnlogin">Click the button to Login</button>
-    
-   
-      
-      <form class="modal-content">
+      <form name="loginform">
         
     
         <div class="container loginform">
@@ -33,9 +25,9 @@
           <label for="psw"><b>Password</b></label>
           <input type="password" placeholder="Enter Password" name="psw" id="psw"required>
             
-          <a class="logina" onclick="login()">Login</a>
+          <a class="logina" onclick="loginvalidate()">Login</a>
 
-          <button type="button"  class="cancelbtn">Cancel</button>
+          
           
         </div>
     

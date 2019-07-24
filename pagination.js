@@ -1,23 +1,50 @@
 var concount;
 
-
 function onupdate(pageno = 1) {
     var table = document.getElementById("ptable");
     deleteall();
     concount = document.getElementById("pageno").value; //takes 5/10/15/20 - contentcount
+    var rem = arrpname.length / concount;
 
-    
-    var j = 1;
+    if(pageno == "next"){
+        document.getElementById("1").value = parseInt(document.getElementById("1").value, 10) + 1;
+        pageno = document.getElementById("1").value;
+    } else if ( pageno == "pre") {
+        document.getElementById("pre").disabled = false;
+        document.getElementById("1").value = parseInt(document.getElementById("1").value, 10) - 1;
+        pageno = document.getElementById("1").value;       
+    } else if(pageno == "create"){
+        document.getElementById("1").value =1 ;
+        pageno = 1; 
+    } else if(pageno > Math.ceil(rem)){
+        alert("Enter a proper Page number, redirecting to page number 1");
+        pageno = 1;
+    }else { document.getElementById("1").value = pageno;
+    }
+
+    if(pageno == 1){
+            document.getElementById("pre").disabled = true;
+        } else{
+            document.getElementById("pre").disabled = false;
+        }
+
+        
+        
+        if( Math.ceil(rem) == pageno )
+        {
+            document.getElementById("next").disabled = true;
+        } else{
+            document.getElementById("next").disabled = false;
+        }
+
+        var j = 1;
 
     j = (concount * (pageno-1)) + 1; //sending the first element of the table to be displayed
     print(j);
 
-    if (pageno == 1) {
-        document.getElementById("pre").disabled = true;
-    }     
-
-
+    resetform();
 }
+
 
 function print(no) {
 
@@ -76,7 +103,23 @@ function activefunction(e) {
 }
 
 function page_click(clicked_id) {
-    clicked_id;
     onupdate(clicked_id);
 }
 
+function gotopage(){
+
+    document.getElementById('go').addEventListener('keypress', function(event) {
+        if (event.keyCode == 13) {
+            event.preventDefault();
+            var pno= document.getElementById('go').value;
+        } 
+        
+        
+    if( pno!="" && pno!= 0){
+        onupdate(pno);
+    }else {alert("Enter a proper value");
+    }
+
+    });
+}  	
+ 
