@@ -199,54 +199,15 @@ table .btnread{
   font-size: 1em;
 }
 
-
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-  width: auto;
-  padding: 0.6em 1.2em;
-  background-color: #f44336;
-  cursor: pointer;
-}
-
-
-
-
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  
-  padding-top: 60px;
-  color: black;
-  
-}
-
-/* Modal Content/Box */
-.modal-content {
-  
-  background-color: lightblue;
-  margin: 10% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 0.1em solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-  
-  
-}
-
 .loginform{
-  color: black;
-  border-color: black;
-  border-radius: 0.5em;
+  max-width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 5%;
 }
 
 #uname,#psw{
-  color: black;
+  color: whitesmoke;
   background-origin: padding-box;
 }
 
@@ -260,19 +221,6 @@ table .btnread{
   }
 }
 
-
-.btnlogin{
-  background-color: goldenrod;
- 
-  padding: 1em 1.25em;
-  margin: 0.5em 0;
-  border: none;
-  cursor: pointer;
-  max-width: 20%;
-  margin-right: auto;
-  margin-left: auto;
-
-}
 
 
 button {
