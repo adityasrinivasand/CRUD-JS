@@ -1,35 +1,56 @@
 var selectedRow = null;
+
 var i=0;
+
 var editicon = '<i onClick = "edit(this)" class = "fas fa-edit btnedit"></i>';
+
 var deleteicon = '<i onClick = "deletee(this)" class = "fas fa-trash btndelete"></i>';
+
 var readicon = '<i  onClick="read(this)" id="btnread" class="fab fa-readme btnread" ></i>';
+
 var check = '<input type="checkbox"  name="checkbox" value="checkbox">';
+
 var arrpname = ['Apple Iphone XR', 'Redmi Note 7', 'Redmi Note 7 Pro', 'Lenovo Z2 Plus', 'Honor 7 Plus', 'Sony Bravia 80 cm (32 Inches) Smart TV (Black) ', 'Samsung Galaxy M30 (Gradation Blue, 4+64 GB)', 'OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)', 'Vivo V15 (Aqua Blue, 6GB RAM, 64GB Storage)','Back Cover for Mi Redmi Note 7, Mi Redmi Note 7 Pro (Blue, Grip Case)', 'JBL C150SI Wired Headset with Mic  (Black, In the Ear)', 'HP U1 16 GB MicroSDHC Class 10 100 Mbps Memory Card', 'Syska WC-2A Mobile Charger', 'Huami Amazfit Stratos Black Smartwatch', 'BIRATTY Virtual Reality Glasses 3D VR Box Headsets ', 'Avermedia USB Microphone AM310 Gaming Accessory Kit ', 'Transcend StoreJet 25M3 2.5 inch 1 TB External Hard Disk', 'SanDisk Ultra Dual Drive M3.0 32 GB OTG Drive ','Apple - (Core i5/8 GB DDR3/1 TB/Mac OS X Mavericks/512 MB) ','MSI GS Core i7 8th Gen'];
 
 var arrseller = ['Amazon', 'Flipkart', 'EBay', 'Snapdeal', 'Amazon', 'Flipkart', 'EBay', 'Snapdeal', 'Flipkart','Amazon', 'Flipkart', 'EBay', 'Snapdeal', 'Amazon', 'Flipkart', 'EBay', 'Snapdeal', 'Flipkart','Snapdeal','Amazon'];
 
-var arrprice = ['60,999', '10,999', '13,999', '9,999', '46,999', '35,999', '20,999', '36,999', '20,999','299', '799', '299', '399', '12,999', '3,999', '10,999', '6,999', '599','1,14,999','1,49,999'];
+var arrprice = ['60999', '10999', '13999', '9999', '46999', '35999', '20999', '36999', '20999','299', '799', '299', '399', '12999', '3999', '10999', '6999', '599','114999','149999'];
 
 var l = arrpname.length;
 
+
 function create() {
+
     var formdata = readformdata();   //creating a new record
+
     insert(formdata);
+
     resetform();
+
     onupdate("create");
+
     activefunction(1);
+
 }
 
-
 function readformdata() {    //to read the form in which details are entered
+
     var formdata = {};    
+
     formdata["pname"] = document.getElementById("pname").value;
+
     formdata["seller"] = document.getElementById("seller").value;
+
     formdata["price"] = document.getElementById("price").value;
+
     formdata["edit"] = editicon;
+
     formdata["delete"] = deleteicon;
+
     formdata["read"] = readicon;
+
     return formdata;
+
 }
 
 function insert(data) {    //inserting a new row
@@ -56,7 +77,7 @@ function insert(data) {    //inserting a new row
     cell7.innerHTML = data.delete; 
     cell8.innerHTML = data.read; 
 
-
+  
     arrpname.push(data.pname);
     arrseller.push(data.seller);
     arrprice.push(data.price);
@@ -72,11 +93,12 @@ function resetform() {
 
 function edit(td) {    // editing the record in which this element id is passed 
     document.getElementById("btn-create").disabled = true;
+    document.getElementById("btn-update").disabled = false;
     selectedRow = td.parentElement.parentElement;   // row selected 
- 
+    
     document.getElementById("pname").value = selectedRow.cells[2].innerHTML;
     document.getElementById("seller").value = selectedRow.cells[3].innerHTML;
-    document.getElementById("price").value = selectedRow.cells[4].innerHTML;    
+    document.getElementById("price").value = parseInt(selectedRow.cells[4].innerHTML, 10);    
 }
 
 
@@ -85,11 +107,14 @@ function deletee(td) {
         row = td.parentElement.parentElement;
         count = td.parentElement;
         document.getElementById("ptable").deleteRow(row.rowIndex);
-        arrpname.reduce(row,1);
-        arrseller.reduce(row,1);
-        arrprice.reduce(row,1);
+        arrpname.splice(row,1);
+        arrseller.splice(row,1);
+        arrprice.splice(row,1);
         resetform();
-    }
+    } 
+    onupdate(pno);
+
+    
 }
 
 function deleteselected() {
@@ -101,11 +126,14 @@ function deleteselected() {
         var chkbox = row.cells[0].childNodes[0];
         if (null != chkbox && true == chkbox.checked) {
             table.deleteRow(i);
+            arrpname.splice(row,1);
+            arrseller.splice(row,1);
+            arrprice.splice(row,1);
             rowCount--;
             i--;
         }
-    }
-}
+    } 
+} onupdate(pno);
 }
 
 function checkall() {
@@ -124,9 +152,17 @@ function updateform() { // after editing by pressing update, the data gets updat
     selectedRow.cells[2].innerHTML = document.getElementById("pname").value;
     selectedRow.cells[3].innerHTML = document.getElementById("seller").value;
     selectedRow.cells[4].innerHTML = document.getElementById("price").value;
+    
+    alert(arrpname[0]);
+   arrpname.replace(arrpname[0] ,selectedRow.cells[2].innerHTML);
+    alert("hi");
+    alert(arrpname[0]);
+    arrseller.set(selectedRow ,selectedRow.cells[3].innerHTML);
+    arrprice.set( selectedRow ,selectedRow.cells[4].innerHTML);
 
     resetform();
     document.getElementById("btn-create").disabled = false;    
+    document.getElementById("btn-update").disabled = true;
 }
 
 
@@ -153,6 +189,7 @@ function exist() {
         cell7.innerHTML = deleteicon;
         cell8.innerHTML = readicon;
     }
+
 }
 
 

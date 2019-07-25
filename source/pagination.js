@@ -1,4 +1,5 @@
 var concount;
+var pno;
 
 function onupdate(pageno = 1) {
     var table = document.getElementById("ptable");
@@ -18,6 +19,8 @@ function onupdate(pageno = 1) {
         pageno = 1; 
     } else if(pageno > Math.ceil(rem)){
         alert("Enter a proper Page number, redirecting to page number 1");
+        document.getElementById('go').value = "";
+        document.getElementById("1").value =1;
         pageno = 1;
     }else { document.getElementById("1").value = pageno;
     }
@@ -108,18 +111,15 @@ function page_click(clicked_id) {
 
 function gotopage(){
 
-    document.getElementById('go').addEventListener('keypress', function(event) {
-        if (event.keyCode == 13) {
-            event.preventDefault();
-            var pno= document.getElementById('go').value;
-        } 
-            
-    if( pno!="" && pno!= 0){
+     pno= document.getElementById('go').value;
+                    
+    if( pno!=="" && pno!== 0){
         onupdate(pno);
     }else {alert("Enter a proper value");
     }
-    });
-}  	
+
+    document.getElementById('go').value="";
+}
+ 	
  
 
-/*       */
