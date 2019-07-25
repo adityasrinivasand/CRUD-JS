@@ -30,14 +30,14 @@ function onupdate(pageno = 1) {
 
         
         
-        if( Math.ceil(rem) == pageno )
-        {
-            document.getElementById("next").disabled = true;
-        } else{
+    if( Math.ceil(rem) == pageno )
+    {
+        document.getElementById("next").disabled = true;
+    } else{
             document.getElementById("next").disabled = false;
-        }
+    }
 
-        var j = 1;
+    var j = 1;
 
     j = (concount * (pageno-1)) + 1; //sending the first element of the table to be displayed
     print(j);
@@ -113,13 +113,13 @@ function gotopage(){
             event.preventDefault();
             var pno= document.getElementById('go').value;
         } 
-        
-        
+            
     if( pno!="" && pno!= 0){
         onupdate(pno);
     }else {alert("Enter a proper value");
     }
-
     });
 }  	
  
+
+/*       */

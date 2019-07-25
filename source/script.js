@@ -4,27 +4,25 @@ var editicon = '<i onClick = "edit(this)" class = "fas fa-edit btnedit"></i>';
 var deleteicon = '<i onClick = "deletee(this)" class = "fas fa-trash btndelete"></i>';
 var readicon = '<i  onClick="read(this)" id="btnread" class="fab fa-readme btnread" ></i>';
 var check = '<input type="checkbox"  name="checkbox" value="checkbox">';
-var arrpname = ['Apple Iphone', 'Redmi Note 7', 'Redmi Note 7 Pro', 'Lenovo Z2 Plus', 'Honor 7 Plus', 'Sony Bravia 80 cm (32 Inches) Smart TV (Black) ', 'Samsung Galaxy M30 (Gradation Blue, 4+64 GB)', 'OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)', 'Vivo V15 (Aqua Blue, 6GB RAM, 64GB Storage)','Apple Iphone', 'Redmi Note 7', 'Redmi Note 7 Pro', 'Lenovo Z2 Plus', 'Honor 7 Plus', 'Sony Bravia 80 cm (32 Inches) Smart TV (Black) ', 'Samsung Galaxy M30 (Gradation Blue, 4+64 GB)', 'OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)', 'Vivo V15 (Aqua Blue, 6GB RAM, 64GB Storage) '];
+var arrpname = ['Apple Iphone XR', 'Redmi Note 7', 'Redmi Note 7 Pro', 'Lenovo Z2 Plus', 'Honor 7 Plus', 'Sony Bravia 80 cm (32 Inches) Smart TV (Black) ', 'Samsung Galaxy M30 (Gradation Blue, 4+64 GB)', 'OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)', 'Vivo V15 (Aqua Blue, 6GB RAM, 64GB Storage)','Back Cover for Mi Redmi Note 7, Mi Redmi Note 7 Pro (Blue, Grip Case)', 'JBL C150SI Wired Headset with Mic  (Black, In the Ear)', 'HP U1 16 GB MicroSDHC Class 10 100 Mbps Memory Card', 'Syska WC-2A Mobile Charger', 'Huami Amazfit Stratos Black Smartwatch', 'BIRATTY Virtual Reality Glasses 3D VR Box Headsets ', 'Avermedia USB Microphone AM310 Gaming Accessory Kit ', 'Transcend StoreJet 25M3 2.5 inch 1 TB External Hard Disk', 'SanDisk Ultra Dual Drive M3.0 32 GB OTG Drive ','Apple - (Core i5/8 GB DDR3/1 TB/Mac OS X Mavericks/512 MB) ','MSI GS Core i7 8th Gen'];
 
-var arrseller = ['Amazon', 'Flipkart', 'EBay', 'Snapdeal', 'Amazon', 'Flipkart', 'EBay', 'Snapdeal', 'Flipkart','Amazon', 'Flipkart', 'EBay', 'Snapdeal', 'Amazon', 'Flipkart', 'EBay', 'Snapdeal', 'Flipkart'];
+var arrseller = ['Amazon', 'Flipkart', 'EBay', 'Snapdeal', 'Amazon', 'Flipkart', 'EBay', 'Snapdeal', 'Flipkart','Amazon', 'Flipkart', 'EBay', 'Snapdeal', 'Amazon', 'Flipkart', 'EBay', 'Snapdeal', 'Flipkart','Snapdeal','Amazon'];
 
-var arrprice = ['20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000','20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000', '20,000'];
+var arrprice = ['60,999', '10,999', '13,999', '9,999', '46,999', '35,999', '20,999', '36,999', '20,999','299', '799', '299', '399', '12,999', '3,999', '10,999', '6,999', '599','1,14,999','1,49,999'];
 
 var l = arrpname.length;
 
 function create() {
-    var formdata = readformdata();
+    var formdata = readformdata();   //creating a new record
     insert(formdata);
     resetform();
     onupdate("create");
     activefunction(1);
-
 }
 
 
-function readformdata() {
-    var formdata = {};
-    
+function readformdata() {    //to read the form in which details are entered
+    var formdata = {};    
     formdata["pname"] = document.getElementById("pname").value;
     formdata["seller"] = document.getElementById("seller").value;
     formdata["price"] = document.getElementById("price").value;
@@ -34,7 +32,7 @@ function readformdata() {
     return formdata;
 }
 
-function insert(data) {
+function insert(data) {    //inserting a new row
 
     var table = document.getElementById("ptable").getElementsByTagName('tbody')[0];
     var newrow = table.insertRow(table.length);
@@ -66,27 +64,19 @@ function insert(data) {
 
 }
 
-function resetform() {
-    
+function resetform() {    
     document.getElementById("pname").value = "";
     document.getElementById("seller").value = "";
     document.getElementById("price").value = "";
 }
 
-
-
-function edit(td) {
+function edit(td) {    // editing the record in which this element id is passed 
     document.getElementById("btn-create").disabled = true;
-    selectedRow = td.parentElement.parentElement;
-   
+    selectedRow = td.parentElement.parentElement;   // row selected 
+ 
     document.getElementById("pname").value = selectedRow.cells[2].innerHTML;
     document.getElementById("seller").value = selectedRow.cells[3].innerHTML;
-    document.getElementById("price").value = selectedRow.cells[4].innerHTML;
-
-    
-
-
-    
+    document.getElementById("price").value = selectedRow.cells[4].innerHTML;    
 }
 
 
@@ -99,16 +89,13 @@ function deletee(td) {
         arrseller.reduce(row,1);
         arrprice.reduce(row,1);
         resetform();
-
     }
 }
 
 function deleteselected() {
-
     var table = document.getElementById("ptable");
-
     var rowCount = table.rows.length;
-
+    if (confirm('Are you Sure ?')) {
     for (var i = 1; i < rowCount; i++) {
         var row = table.rows[i];
         var chkbox = row.cells[0].childNodes[0];
@@ -117,45 +104,34 @@ function deleteselected() {
             rowCount--;
             i--;
         }
-
-    } 
-    
-
+    }
 }
-
-
+}
 
 function checkall() {
     var checkboxes = document.getElementsByTagName('input');
     var val = null;
     for (var i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i].type == 'checkbox') {
+        if (checkboxes[i].type === 'checkbox') {
             if (val === null) val = checkboxes[i].checked;
             checkboxes[i].checked = val;
         }
     }
 }
 
-
-
-
-
-function updateform() {
+function updateform() { // after editing by pressing update, the data gets updated
     
     selectedRow.cells[2].innerHTML = document.getElementById("pname").value;
     selectedRow.cells[3].innerHTML = document.getElementById("seller").value;
     selectedRow.cells[4].innerHTML = document.getElementById("price").value;
 
     resetform();
-    document.getElementById("btn-create").disabled = false;
-    
+    document.getElementById("btn-create").disabled = false;    
 }
 
 
-function exist() {
-    
-    var table = document.getElementById("ptable");
- 
+function exist() {    
+    var table = document.getElementById("ptable"); 
 
     for (i = 1; i <=5  ; i++) {
         var row = table.insertRow(i);
@@ -176,7 +152,6 @@ function exist() {
         cell6.innerHTML = editicon;
         cell7.innerHTML = deleteicon;
         cell8.innerHTML = readicon;
-
     }
 }
 
@@ -187,12 +162,10 @@ function login() {
 
     var str1 = "Admin";
     var str2 = "pass"
-
     var str3 = document.getElementById("uname").value;
     var str4 = document.getElementById("psw").value;
 
-
-    if ((str3 == str1) && (str4 == str2)) {
+    if ((str3 === str1) && (str4 === str2)) {
         window.location.assign("../source/home.html");
     } else {
         alert("User Name or Password is Wrong, Kindly check it !")
@@ -200,17 +173,20 @@ function login() {
 
 }
 
-function search() {
+function search() {   //search multiple entities
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("myinput");
-    filter = input.value.toUpperCase();
+    filter = input.value.toUpperCase();    
     table = document.getElementById("ptable");
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td")[2];
+        td1 = tr[i].getElementsByTagName("td")[3];
         if (td) {
             txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            txtValue1 = td1.textContent || td1.innerText;
+            
+            if ((txtValue.toUpperCase().indexOf(filter) > -1)|| (txtValue1.toUpperCase().indexOf(filter) > -1)) {
                 tr[i].style.display = "";
             } else {
                 tr[i].style.display = "none";
@@ -226,40 +202,40 @@ function productvalidate(){
     var price = document.forms["productform"]["price"].value;
     var seller = document.forms["productform"]["seller"].value;
     var f=0; 
-    if (name == "") {
+    if (name === "") {
       alert("Product Name must be filled out");
       return false; f=1; 
     }
 
-    if (price == "") {
+    if (price === "") {
         alert("Price must be filled out");
         return false; f=1; 
     }
 
-    if (seller == "") {
+    if (seller === "") {
         alert("Seller must be Choosen out");
         return false; f=1; 
     }
-
-    if( f==0 )
+    if( f === 0 )
     create();
 }
 
 function loginvalidate(){
+
     var name = document.forms["loginform"]["uname"].value;
     var pass = document.forms["loginform"]["psw"].value;
     var f=0; 
-    if (name == "") {
+    if (name === "") {
       alert("User Name must be filled out");
       return false; f=1; 
     }
 
-    if (pass == "") {
+    if (pass === "") {
         alert("Password must be filled out");
         return false; f=1; 
     }
 
-    if( f==0 )
+    if( f === 0 )
     login();
 }
 
@@ -267,30 +243,21 @@ function read(td){
 
     selectedRow = td.parentElement.parentElement;
     var modal = document.getElementById("myModal");
+    var span = document.getElementsByClassName("close")[0];
+    modal.style.display = "block";
 
-var span = document.getElementsByClassName("close")[0];
-  modal.style.display = "block";
-
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+span.onclick = function() { // When the user clicks on <span> (x), close the modal
   modal.style.display = "none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = function(event) { // When the user clicks anywhere outside of the modal, close it
   if (event.target == modal) {
     modal.style.display = "none";
   }
 }
 
-
-
 document.getElementById("disid").innerHTML =  selectedRow.cells[1].innerHTML;
 document.getElementById("dispro").innerHTML =  selectedRow.cells[2].innerHTML;
 document.getElementById("dissell").innerHTML =  selectedRow.cells[3].innerHTML;
 document.getElementById("disprice").innerHTML =  selectedRow.cells[4].innerHTML;
-
-
-
 }
