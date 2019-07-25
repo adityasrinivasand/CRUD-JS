@@ -1,337 +1,282 @@
 @import "https://fonts.googleapis.com/css?family=DM+Serif+Display|Heebo|Indie+Flower|Merriweather|Mountains+of+Christmas|Noto+Serif|Slabo+27px|Work+Sans&display=swap";
 
 * {
-  box-sizing: border-box
+box-sizing:border-box
 }
 
-body,
-html {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  
-  background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,.6)),url(../assets/3.jpeg);
-  background-size: cover;
-
+body,html {
+height:100%;
+margin:0;
+padding:0;
+background-image:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,.8)),url(../assets/3.jpeg);
+background-size:cover;
 }
 
-header,
-section,
-footer {
-  overflow-x: hidden;
-
+header,section,footer {
+overflow-x:hidden;
 }
 
 :root {
-  --dm: "DM Serif Display", cursive;
-  --heebo: Heebo, cursive;
-  --indie: "Indie Flower", cursive;
-  --merrie: Merriweather, cursive;
-  --mountains: "Mountains of Christmas", cursive;
-  --noto: "Noto Serif", cursive;
-  --lightblack: #2e2e2e;
-  --bggradient: linear-gradient(to bottom, #dd2476, #ff512ff);
-  --lightgray: rgba(255, 255, 255, 0)
+--dm:"DM Serif Display",cursive;
+--heebo:Heebo,cursive;
+--indie:"Indie Flower",cursive;
+--merrie:Merriweather,cursive;
+--mountains:"Mountains of Christmas",cursive;
+--noto:"Noto Serif",cursive;
+--lightblack:#2e2e2e;
+--bggradient:linear-gradient(to bottom,#dd2476,#ff512ff);
+--lightgray:rgba(255,255,255,0)
 }
 
-.el {
-  padding: 0.25em;
-  text-align: center;
-  font-size: 2em;
-  color: whitesmoke;
-  font-family: var(--merrie);
-  
+.el { /* Heading CSS */
+padding:.25em;
+text-align:center;
+font-size:2em;
+color:#f5f5f5;
+font-family:var(--merrie);
 }
 
-
-option{
-  background-color: gray;
+option {
+background-color:gray
 }
 
-
-input[type=text],
-input[type=number],
-select,
-textarea,
-input[type=password] {
-  width: 100%;
-  padding: 0.5em;
-  border: 1px solid white;
-  border-radius: 0.25em;
-  resize: vertical;
-  background: transparent;
-  color: white;
-
+input[type=text],input[type=number],select,textarea,input[type=password] {
+width:100%;
+padding:.5em;
+border:1px solid #fff;
+border-radius:.25em;
+resize:vertical;
+background:transparent;
+color:#fff;
 }
 
 label {
-  padding: 0.75em 0.75em 0.75em 0;
-  display: inline-block;
+padding:.75em .75em .75em 0;
+display:inline-block;
 }
 
 .container {
-  border-radius: 0.3em;
-  background-color: transparent;
-  opacity: 1;
-  padding: 1em;
-  color: white; 
+border-radius:.3em;
+background-color:transparent;
+opacity:1;
+padding:1em;
+color:#fff;
 }
 
 .col-25 {
-  float: left;
-  width: 25%;
-  margin-top: 0.4em;
+float:left;
+width:25%;
+margin-top:.4em;
 }
 
 .col-75 {
-  float: left;
-  width: 75%;
-  margin-top: 0.4em;
-  
+float:left;
+width:75%;
+margin-top:.4em;
 }
 
-/* Clear floats after the columns */
 .row:after {
-  content: "";
-  display: table;
-  clear: both;
+content:"";
+display:table;
+clear:both;
 }
 
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
-
-  .col-25,
-  .col-75 {
-    width: 100%;
-    margin-top: 0;
-  }
+.col-25,.col-75 {
+width:100%;
+margin-top:0;
 }
-
+}
 
 input[type=submit] {
-  font-size: 1em;
-  font-weight: bold;
-  font-family: var(--noto);
-  letter-spacing: 0.2em;
-  border-radius: 0.5em;
-  margin-right: auto;
-  margin-left: auto;
-  text-align: center;
-  padding: 0.25em;
+font-size:1em;
+font-weight:700;
+font-family:var(--noto);
+letter-spacing:.2em;
+border-radius:.5em;
+float:right;
+margin:.25em;
+padding:.25em;
 }
 
-
-table,
-th,
-td {
-  border: 1px solid gold;
-  text-align: center;
-  font-size: 1.2em;
-  
+table,th,td {
+border:1px solid #ffd700;
+text-align:center;
+font-size:1.2em;
 }
 
-th{
-  color: blanchedalmond;
+th {
+color:#ffebcd;
 }
 
 table {
-  width: 100%;
-  margin: 0.5em;
-  
+width:100%;
+margin:.5em;
 }
 
 table .btnedit {
-  color: lightgreen;
-  cursor: pointer;
+color:#90ee90;
+cursor:pointer;
 }
 
 table .btndelete {
-  color: red;
-  cursor: pointer;
+color:red;
+cursor:pointer;
 }
 
-table .btnread{
-  color: yellow;
-  cursor: pointer;
+table .btnread {
+color:#ff0;
+cursor:pointer;
 }
 
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-    display: block;
-    float: none;
-  }
-
-  .cancelbtn {
-    width: 100%;
-  }
-}
-
-.login {
-  margin-right: auto;
-  margin-left: auto;
-  text-align: center;
-  padding: 1em;
-  font-family: var(--mountains);
-  
+.login {  /*login form*/
+margin-right:auto;
+margin-left:auto;
+text-align:center;
+padding:1em;
+font-family:var(--mountains);
 }
 
 .logina {
-  padding: 0.5em;
-  background-color: #4CAF50;
-  cursor: pointer;
-
+padding:.5em;
+background-color:#4CAF50;
+cursor:pointer;
 }
 
 #myinput {
-
-  max-width: 20%;
-  margin: 1em;
-  font-size: 1em;
+max-width:20%;
+margin:1em;
+font-size:1em;
 }
 
-.loginform{
-  max-width: 50%;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 5%;
+.loginform {
+max-width:50%;
+margin-right:auto;
+margin-left:auto;
+margin-top:5%;
 }
 
-#uname,#psw{
-  color: whitesmoke;
-  background-origin: padding-box;
+#uname,#psw {
+color:#f5f5f5;
+background-origin:padding-box;
 }
 
-
-
-/* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
+span.psw {
+display:block;
+float:none;
 }
-
-
+}
 
 button {
-  margin:auto;
-  display:inline-block;
-  border-radius: 0.5em;
+margin:auto;
+display:inline-block;
+border-radius:.5em;
 }
 
-a{
-  margin:auto;
-  display:block;
-  max-width: 25%;
-  width:auto;
-  text-align: center;
-  padding: 1em;
-  border-radius: 0.5em;
+a {
+margin:auto;
+display:block;
+max-width:25%;
+width:auto;
+text-align:center;
+padding:1em;
+border-radius:.5em;
 }
 
 .center {
-  text-align: center;
+text-align:center;
 }
 
 #pagination {
-  display: inline-block;
+display:inline-block;
 }
 
 #pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-  transition: background-color .3s;
-  border: 1px solid #ddd;
-  margin: 0 4px;
+color:#000;
+float:left;
+padding:8px 16px;
+text-decoration:none;
+transition:background-color .3s;
+border:1px solid #ddd;
+margin:0 4px;
 }
 
 #pagination .active {
-  background-color: #4CAF50;
-  color: white;
-  border: 1px solid #4CAF50;
+background-color:#4CAF50;
+color:#fff;
+border:1px solid #4CAF50;
 }
 
-.pagination a:hover:not(.active) {background-color: #ddd;}
-
-#pageno{
-  max-width: 10%;
-  display: inline;
-  margin: 1em;  
- 
+.pagination a:hover:not(.active) {
+background-color:#ddd;
 }
 
-.goto{
-  max-width: 10%;
-  float: right;
-  margin: 1em;
-  margin-right: 2em;
-
+#pageno {
+max-width:10%;
+display:inline;
+margin:1em;
 }
 
-::placeholder{
-  color: white; 
+.goto {
+max-width:10%;
+float:right;
+margin:1em;
+margin-right:2em;
 }
 
-/* The Modal (background) */
+::placeholder {
+color:#fff;
+}
+
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+display:none;
+position:fixed;
+z-index:1;
+padding-top:100px;
+left:0;
+top:0;
+width:100%;
+height:100%;
+overflow:auto;
+background-color:#000;
+background-color:rgba(0,0,0,0.4);
 }
 
-/* Modal Content */
 .modal-content {
-  background-color: dimgrey;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  color: black; 
-  
+background-color:dimgrey;
+margin:auto;
+padding:20px;
+border:1px solid #888;
+width:80%;
+color:#000;
 }
 
-/* The Close Button */
 .close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+color:#aaa;
+float:right;
+font-size:28px;
+font-weight:700;
 }
 
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
+.close:hover,.close:focus {
+color:#000;
+text-decoration:none;
+cursor:pointer;
 }
 
-.modal-content h1{
-  text-align: center;
+.modal-content h1 {
+text-align:center;
 }
 
-
-
-.modal-content p{
-  color: blanchedalmond;
-  font-family: var(--dm);
-  display: flex;
-
+.modal-content p {
+color:#ffebcd;
+font-family:var(--dm);
+display:flex;
 }
 
-.disitem{
-  font-size: 1em;
-  font-family: var(--mountains);
-  color:white;
+.disitem {
+font-size:1em;
+font-family:var(--mountains);
+color:#fff;
 }
