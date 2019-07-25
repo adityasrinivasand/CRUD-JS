@@ -1,7 +1,7 @@
 @import "https://fonts.googleapis.com/css?family=DM+Serif+Display|Heebo|Indie+Flower|Merriweather|Mountains+of+Christmas|Noto+Serif|Slabo+27px|Work+Sans&display=swap";
 
 * {
-box-sizing:border-box
+box-sizing:border-box;
 }
 
 body,html {
@@ -188,42 +188,11 @@ border-radius:.5em;
 text-align:center;
 }
 
-#pagination {
-display:inline-block;
+#pagination{
+  float: right;
 }
 
-#pagination a {
-color:#000;
-float:left;
-padding:8px 16px;
-text-decoration:none;
-transition:background-color .3s;
-border:1px solid #ddd;
-margin:0 4px;
-}
 
-#pagination .active {
-background-color:#4CAF50;
-color:#fff;
-border:1px solid #4CAF50;
-}
-
-.pagination a:hover:not(.active) {
-background-color:#ddd;
-}
-
-#pageno {
-max-width:10%;
-display:inline;
-margin:1em;
-}
-
-.goto {
-max-width:10%;
-float:right;
-margin:1em;
-margin-right:2em;
-}
 
 ::placeholder {
 color:#fff;
@@ -279,4 +248,52 @@ display:flex;
 font-size:1em;
 font-family:var(--mountains);
 color:#fff;
+}
+
+table#bottom {
+  table-layout: fixed ;
+  width: 100% ;
+  border-collapse: collapse ;
+  border: none ;
+}
+table#bottom .trow {
+  width: 33.333% ;
+  border: none;
+  padding: 10px ;
+}
+
+table#bottom th {
+  width: 33.333% ;
+  border: none;
+  padding: 10px ;
+}
+
+  
+#pageno {
+  max-width:30%;
+  float: left;
+  margin:1em;
+}
+
+#gobutton{
+  width: 50%;
+  float: right;
+}
+
+#go{
+  margin-right: 1em;
+  max-width: 35%;
+  float: right;
+}
+
+#gobutton{
+  float: left;
+  padding: 0.25em;
+  max-width: 15%;
+  
+}
+
+.fa-search{
+  color: white;
+  margin-left: 1em;
 }
