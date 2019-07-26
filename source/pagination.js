@@ -31,6 +31,8 @@ function onupdate(pageno = 1) {
             document.getElementById("pre").disabled = false;
         }
 
+    send(pageno);    
+    send1(concount);
         
         
     if( Math.ceil(rem) == pageno )

@@ -18,6 +18,18 @@ var arrprice = ['60999', '10999', '13999', '9999', '46999', '35999', '20999', '3
 
 var l = arrpname.length;
 
+var page = 1;
+var pp;
+
+var pro; //for edit purpose
+var sell;
+var pri;
+
+var delpro;
+var delsell;
+var delpri;
+
+
 
 function create() {
 
@@ -99,21 +111,57 @@ function edit(td) {    // editing the record in which this element id is passed
     document.getElementById("pname").value = selectedRow.cells[2].innerHTML;
     document.getElementById("seller").value = selectedRow.cells[3].innerHTML;
     document.getElementById("price").value = parseInt(selectedRow.cells[4].innerHTML, 10);    
+
+    pro = selectedRow.cells[2].innerHTML;
+    sell = selectedRow.cells[3].innerHTML;
+    pri =   document.getElementById("price").value;
 }
 
+function send(p){
+
+   page = p; 
+}
+
+function send1(concount){
+    con = concount; //for deletion sending the concount here
+}
 
 function deletee(td) {
     if (confirm('Are you Sure ?')) {
         row = td.parentElement.parentElement;
         count = td.parentElement;
-        document.getElementById("ptable").deleteRow(row.rowIndex);
-        arrpname.splice(row,1);
-        arrseller.splice(row,1);
-        arrprice.splice(row,1);
-        resetform();
-    } 
-    onupdate(pno);
 
+         pp = (((page-1)*con) + row.rowIndex);
+
+        delpro = arrpname[pp-1];
+        delsell = arrseller[pp-1];
+        delpri = arrprice[pp-1];
+
+        
+        arrpname.splice(pp-1,1); // pp-1 refers to the variable in the array
+        arrseller.splice(pp-1,1);
+        arrprice.splice(pp-1,1);
+
+        document.getElementById("ptable").deleteRow(row.rowIndex);
+        
+       
+        resetform();
+        document.getElementById("btn-undo").disabled = false; 
+        
+    } 
+    onupdate(p);
+
+    
+}
+
+function undo(){
+    
+   
+        arrpname[pp-1] = delpro;
+        arrseller[pp-1] = delsell;
+        arrprice[pp-1] = delpri;
+        document.getElementById("btn-undo").disabled = true; 
+    onupdate(1);
     
 }
 
@@ -125,15 +173,13 @@ function deleteselected() {
         var row = table.rows[i];
         var chkbox = row.cells[0].childNodes[0];
         if (null != chkbox && true == chkbox.checked) {
+           
             table.deleteRow(i);
-            arrpname.splice(row,1);
-            arrseller.splice(row,1);
-            arrprice.splice(row,1);
             rowCount--;
             i--;
         }
     } 
-} onupdate(pno);
+} onupdate(p);
 }
 
 function checkall() {
@@ -148,21 +194,37 @@ function checkall() {
 }
 
 function updateform() { // after editing by pressing update, the data gets updated
+
     
     selectedRow.cells[2].innerHTML = document.getElementById("pname").value;
     selectedRow.cells[3].innerHTML = document.getElementById("seller").value;
     selectedRow.cells[4].innerHTML = document.getElementById("price").value;
-    
-    alert(arrpname[0]);
-   arrpname.replace(arrpname[0] ,selectedRow.cells[2].innerHTML);
-    alert("hi");
-    alert(arrpname[0]);
-    arrseller.set(selectedRow ,selectedRow.cells[3].innerHTML);
-    arrprice.set( selectedRow ,selectedRow.cells[4].innerHTML);
 
-    resetform();
+
+
+    
+
+    for( i =0; i < arrpname.length ; i++){
+        if(arrpname[i] == pro){
+            arrpname[i] = selectedRow.cells[2].innerHTML;
+        }
+        if(arrseller[i] == sell){
+            arrseller[i] = selectedRow.cells[3].innerHTML;
+        }
+        if(arrprice[i] == pri){
+            arrprice[i] = selectedRow.cells[4].innerHTML;
+        }
+    }
     document.getElementById("btn-create").disabled = false;    
     document.getElementById("btn-update").disabled = true;
+
+    arrpname.replace(pro,selectedRow.cells[2].innerHTML); // pp-1 refers to the variable in the array
+    arrseller.replace(sell, selectedRow.cells[3].innerHTML);
+    arrprice.replace(pri,selectedRow.cells[4].innerHTML);
+    
+    
+    resetform();
+    
 }
 
 
