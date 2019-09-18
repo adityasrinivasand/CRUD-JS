@@ -32,8 +32,7 @@ function onupdate(pageno = 1) {
         }
 
     send(pageno);    
-    send1(concount);
-        
+    send1(concount);        
         
     if( Math.ceil(rem) == pageno )
     {
@@ -43,16 +42,13 @@ function onupdate(pageno = 1) {
     }
 
     var j = 1;
-
     j = (concount * (pageno-1)) + 1; //sending the first element of the table to be displayed
     print(j);
 
     resetform();
 }
 
-
 function print(no) {
-
     var table = document.getElementById("ptable");
     var i = no;
     var j = 1;
@@ -80,14 +76,9 @@ function print(no) {
         j++;
         i++;
     }
-
 }
 
-
-
-
 function deleteall() {
-
     var table = document.getElementById("ptable");
     var rowCount = table.rows.length;
     for (var i = 1; i < rowCount; i++) {
@@ -96,15 +87,6 @@ function deleteall() {
         rowCount--;
         i--;
     }
-
-}
-
-function activefunction(e) {
-    if (document.querySelector('#pagination a.active') !== null) {
-        document.querySelector('#pagination a.active').classList.remove('active');
-    }
-    e.target.className = "active";
-
 }
 
 function page_click(clicked_id) {
@@ -112,10 +94,9 @@ function page_click(clicked_id) {
 }
 
 function gotopage(){
-
-     pno= document.getElementById('go').value;
+    pno= document.getElementById('go').value;
                     
-    if( pno!=="" && pno!== 0){
+    if( pno!=="" && pno> 0){
         onupdate(pno);
     }else {alert("Enter a proper value");
     }
