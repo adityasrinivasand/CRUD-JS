@@ -78,6 +78,10 @@ function resetform() {
 }
 
 function edit(td) {    // editing the record in which this element id is passed 
+    row = td.parentElement.parentElement;
+        count = td.parentElement;
+        
+        pp = (((page-1)*con) + row.rowIndex);
     document.getElementById("btn-create").disabled = true;
     document.getElementById("btn-update").disabled = false;
     selectedRow = td.parentElement.parentElement;   // row selected 
@@ -89,6 +93,8 @@ function edit(td) {    // editing the record in which this element id is passed
     pro = selectedRow.cells[2].innerHTML;
     sell = selectedRow.cells[3].innerHTML;
     pri =   document.getElementById("price").value;
+    
+    
 }
 
 function send(p){
@@ -115,7 +121,6 @@ function deletee(td) {
         arrprice.splice(pp-1,1);
 
         document.getElementById("ptable").deleteRow(row.rowIndex);    
-       
         resetform();
         document.getElementById("btn-undo").disabled = false; 
         
@@ -184,12 +189,37 @@ function checkall() {
 
 function updateform() { // after editing by pressing update, the data gets updated
 
-    selectedRow.cells[2].innerHTML = document.getElementById("pname").value;
-    selectedRow.cells[3].innerHTML = document.getElementById("seller").value;
-    selectedRow.cells[4].innerHTML = document.getElementById("price").value;
+    var name = document.forms["productform"]["pname"].value;
+    var price = document.forms["productform"]["price"].value;
+    var seller = document.forms["productform"]["seller"].value;
+    var f=0; 
+    if (name === "") {
+    alert("Product Name must be filled out");
+    return false; f=1; 
+    }
+    if (price === "") {
+        alert("Price must be filled out");
+        return false; f=1; 
+    }
+    if (price > 200000){
+        alert("Price cannot be greater than 200000");
+        return false; f=1; 
+    }
+    if (seller === "") {
+        alert("Seller must be Choosen out");
+        return false; f=1; 
+    }
+    if(f==1){
+        edit(this);
+    }
+
+    if(f==0){
+        selectedRow.cells[2].innerHTML = document.getElementById("pname").value;
+        selectedRow.cells[3].innerHTML = document.getElementById("seller").value;
+        selectedRow.cells[4].innerHTML = document.getElementById("price").value;
 
     for( i =0; i < arrpname.length ; i++){
-        if(i== (selectedRow.rowIndex -1 )){
+        if(i== (pp -1 )){
             arrpname[i] = selectedRow.cells[2].innerHTML;
             arrseller[i] = selectedRow.cells[3].innerHTML;
             arrprice[i] = selectedRow.cells[4].innerHTML;
@@ -202,7 +232,8 @@ function updateform() { // after editing by pressing update, the data gets updat
     arrpname.replace(pro,selectedRow.cells[2].innerHTML); // pp-1 refers to the variable in the array
     arrseller.replace(sell, selectedRow.cells[3].innerHTML);
     arrprice.replace(pri,selectedRow.cells[4].innerHTML);
-  
+    }
+
 }
 
 function exist() {  
@@ -271,11 +302,15 @@ function productvalidate(){
     var seller = document.forms["productform"]["seller"].value;
     var f=0; 
     if (name === "") {
-      alert("Product Name must be filled out");
-      return false; f=1; 
+    alert("Product Name must be filled out");
+    return false; f=1; 
     }
     if (price === "") {
         alert("Price must be filled out");
+        return false; f=1; 
+    }
+    if (price > 200000){
+        alert("Price cannot be greater than 200000");
         return false; f=1; 
     }
     if (seller === "") {
